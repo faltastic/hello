@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<!-- saved from url=(0055)https://threejs.org/examples/?q=birds#webgl_gpgpu_birds -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script type="text/javascript" async="" src="./three.js _ examples_files/whoami"></script>
+		<title>three.js / examples</title>
+		
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<style>
+
+			@font-face {
+				font-family: 'inconsolata';
+				src: url('files/inconsolata.woff') format('woff');
+				font-weight: normal;
+				font-style: normal;
+			}
+
+			* {
+				box-sizing: border-box;
+			}
+
+			html {
+				height: 100%;
+			}
+
+			body {
+				background-color: #ffffff;
+				margin: 0px;
+				height: 100%;
+				color: #555;
+				font-family: 'inconsolata';
+				font-size: 15px;
+				line-height: 18px;
+				overflow: hidden;
+			}
+
+			h1 {
+				margin-top: 30px;
+				margin-bottom: 40px;
+				margin-left: 20px;
+				font-size: 25px;
+				font-weight: normal;
+			}
+
+			h2 {
+				font-size: 20px;
+				font-weight: normal;
+			}
+
+			a {
+				color: #2194CE;
+				text-decoration: none;
+			}
+
+			#panel {
+				position: fixed;
+				left: 0px;
+				width: 310px;
+				height: 100%;
+				overflow: auto;
+				background: #fafafa;
+			}
+
+			#panel #content {
+				padding: 0px 20px 20px 20px;
+			}
+
+			#panel #content .link {
+				color: #2194CE;
+				text-decoration: none;
+				cursor: pointer;
+				display: block;
+			}
+
+			#panel #content .selected {
+				color: #ff0000;
+			}
+
+			#panel #content .link:hover {
+				text-decoration: underline;
+			}
+
+			#viewer {
+				position: absolute;
+				border: 0px;
+				left: 310px;
+				width: calc(100% - 310px);
+				height: 100%;
+				overflow: auto;
+			}
+
+			#button {
+				position: fixed;
+				bottom: 20px;
+				right: 20px;
+				padding: 8px;
+				color: #fff;
+				background-color: #555;
+				opacity: 0.7;
+			}
+
+			#button:hover {
+				cursor: pointer;
+				opacity: 1;
+			}
+
+			.filterBlock{
+				margin: 20px;
+				position: relative;
+			}
+
+			.filterBlock p {
+				margin: 0;
+			}
+
+			#filterInput {
+				width: 100%;
+				padding: 5px;
+				font-family: inherit;
+				font-size: 15px;
+				outline: none;
+				border: 1px solid #dedede;
+			}
+
+			#filterInput:focus{
+				border: 1px solid #2194CE;
+			}
+
+			#clearFilterButton {
+				position: absolute;
+				right: 6px;
+				top: 50%;
+				margin-top: -8px;
+				width: 16px;
+				height: 16px;
+				font-size: 14px;
+				color: grey;
+				text-align: center;
+				line-height: 0;
+				padding-top: 7px;
+				opacity: .5;
+			}
+
+			#clearFilterButton:hover {
+				opacity: 1;
+			}
+
+			.filtered {
+				display: none !important;
+			}
+
+			#panel li b {
+				font-weight: bold;
+			}
+
+			/* mobile */
+
+			#expandButton {
+				display: none;
+				position: absolute;
+				right: 20px;
+				top: 12px;
+				width: 32px;
+				height: 32px;
+			}
+
+			#expandButton span {
+				height: 2px;
+				background-color: #2194CE;
+				width: 16px;
+				position: absolute;
+				left: 8px;
+				top: 10px;
+			}
+
+			#expandButton span:nth-child(1) {
+				top: 16px;
+			}
+
+			#expandButton span:nth-child(2) {
+				top: 22px;
+			}
+
+			@media all and ( max-width: 640px ) {
+				h1{
+					margin-top: 20px;
+					margin-bottom: 20px;
+				}
+				#panel{
+					position: absolute;
+					left: 0;
+					top: 0;
+					height: 480px;
+					width: 100%;
+					right: 0;
+					z-index: 100;
+					overflow: hidden;
+					border-bottom: 1px solid #dedede;
+				}
+				#content{
+					position: absolute;
+					left: 0;
+					top: 90px;
+					right: 0;
+					bottom: 0;
+					font-size: 17px;
+					line-height: 22px;
+					overflow: auto;
+				}
+				#viewer{
+					position: absolute;
+					left: 0;
+					top: 56px;
+					width: 100%;
+					height: calc(100% - 56px);
+				}
+				#expandButton{
+					display: block;
+				}
+				#panel.collapsed{
+					height: 56px;
+				}
+			}
+
+		</style>
+	<script type="text/javascript" src="./three.js _ examples_files/bc2556d1c1ea2a2d00.js"></script></head>
+	<body>
+		<script type="text/javascript" async="" src="./three.js _ examples_files/ga.js"></script><script type="text/javascript">
+
+		  var _gaq = _gaq || [];
+		  _gaq.push(['_setAccount', 'UA-86951-15']);
+		  _gaq.push(['_trackPageview']);
+
+		  (function() {
+		    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		  })();
+
+		</script>
+
+		<div id="panel" class="">
+			<h1><a href="http://threejs.org/">three.js</a> / examples</h1>
+			<a id="expandButton" href="https://threejs.org/examples/?q=birds#">
+				<span></span>
+				<span></span>
+				<span></span>
+			</a>
+			<div class="filterBlock">
+				<input type="text" id="filterInput" placeholder="Type to filter">
+				<a href="https://threejs.org/examples/?q=birds#" id="clearFilterButton">x</a>
+			</div>
+			<div id="content"><div><h2 data-category="webgl">webgl</h2><a class="link filtered" href="https://threejs.org/examples/webgl_animation_cloth.html" target="viewer">animation / cloth</a><a class="link filtered" href="https://threejs.org/examples/webgl_animation_scene.html" target="viewer">animation / scene</a><a class="link filtered" href="https://threejs.org/examples/webgl_animation_skinning_blending.html" target="viewer">animation / skinning / blending</a><a class="link filtered" href="https://threejs.org/examples/webgl_animation_skinning_morph.html" target="viewer">animation / skinning / morph</a><a class="link filtered" href="https://threejs.org/examples/webgl_camera.html" target="viewer">camera</a><a class="link filtered" href="https://threejs.org/examples/webgl_camera_cinematic.html" target="viewer">camera / cinematic</a><a class="link filtered" href="https://threejs.org/examples/webgl_camera_logarithmicdepthbuffer.html" target="viewer">camera / logarithmicdepthbuffer</a><a class="link filtered" href="https://threejs.org/examples/webgl_clipping.html" target="viewer">clipping</a><a class="link filtered" href="https://threejs.org/examples/webgl_clipping_advanced.html" target="viewer">clipping / advanced</a><a class="link filtered" href="https://threejs.org/examples/webgl_clipping_intersection.html" target="viewer">clipping / intersection</a><a class="link filtered" href="https://threejs.org/examples/webgl_decals.html" target="viewer">decals</a><a class="link filtered" href="https://threejs.org/examples/webgl_depth_texture.html" target="viewer">depth / texture</a><a class="link filtered" href="https://threejs.org/examples/webgl_effects_anaglyph.html" target="viewer">effects / anaglyph</a><a class="link filtered" href="https://threejs.org/examples/webgl_effects_parallaxbarrier.html" target="viewer">effects / parallaxbarrier</a><a class="link filtered" href="https://threejs.org/examples/webgl_effects_peppersghost.html" target="viewer">effects / peppersghost</a><a class="link filtered" href="https://threejs.org/examples/webgl_effects_stereo.html" target="viewer">effects / stereo</a><a class="link filtered" href="https://threejs.org/examples/webgl_exporter_obj.html" target="viewer">exporter / obj</a><a class="link filtered" href="https://threejs.org/examples/webgl_geometries.html" target="viewer">geometries</a><a class="link filtered" href="https://threejs.org/examples/webgl_geometries2.html" target="viewer">geometries2</a><a class="link filtered" href="https://threejs.org/examples/webgl_geometry_colors.html" target="viewer">geometry / colors</a><a class="link filtered" href="https://threejs.org/examples/webgl_geometry_colors_blender.html" target="viewer">geometry / colors / blender</a><a class="link filtered" href="https://threejs.org/examples/webgl_geometry_colors_lookuptable.html" target="viewer">geometry / colors / lookuptable</a><a class="link filtered" href="https://threejs.org/examples/webgl_geometry_convex.html" target="viewer">geometry / convex</a><a class="link filtered" href="https://threejs.org/examples/webgl_geometry_cube.html" target="viewer">geometry / cube</a><a class="link filtered" href="https://threejs.org/examples/webgl_geometry_dynamic.html" target="viewer">geometry / dynamic</a><a class="link filtered" href="https://threejs.org/examples/webgl_geometry_extrude_shapes.html" target="viewer">geometry / extrude / shapes</a><a class="link filtered" href="https://threejs.org/examples/webgl_geometry_extrude_shapes2.html" target="viewer">geometry / extrude / shapes2</a><a class="link filtered" href="https://threejs.org/examples/webgl_geometry_extrude_splines.html" target="viewer">geometry / extrude / splines</a><a class="link filtered" href="https://threejs.org/examples/webgl_geometry_hierarchy.html" target="viewer">geometry / hierarchy</a><a class="link filtered" href="https://threejs.org/examples/webgl_geometry_hierarchy2.html" target="viewer">geometry / hierarchy2</a><a class="link filtered" href="https://threejs.org/examples/webgl_geometry_minecraft.html" target="viewer">geometry / minecraft</a><a class="link filtered" href="https://threejs.org/examples/webgl_geometry_minecraft_ao.html" target="viewer">geometry / minecraft / ao</a><a class="link filtered" href="https://threejs.org/examples/webgl_geometry_normals.html" target="viewer">geometry / normals</a><a class="link filtered" href="https://threejs.org/examples/webgl_geometry_nurbs.html" target="viewer">geometry / nurbs</a><a class="link filtered" href="https://threejs.org/examples/webgl_geometry_shapes.html" target="viewer">geometry / shapes</a><a class="link filtered" href="https://threejs.org/examples/webgl_geometry_spline_editor.html" target="viewer">geometry / spline / editor</a><a class="link filtered" href="https://threejs.org/examples/webgl_geometry_teapot.html" target="viewer">geometry / teapot</a><a class="link filtered" href="https://threejs.org/examples/webgl_geometry_terrain.html" target="viewer">geometry / terrain</a><a class="link filtered" href="https://threejs.org/examples/webgl_geometry_terrain_fog.html" target="viewer">geometry / terrain / fog</a><a class="link filtered" href="https://threejs.org/examples/webgl_geometry_terrain_raycast.html" target="viewer">geometry / terrain / raycast</a><a class="link filtered" href="https://threejs.org/examples/webgl_geometry_text.html" target="viewer">geometry / text</a><a class="link filtered" href="https://threejs.org/examples/webgl_geometry_text_earcut.html" target="viewer">geometry / text / earcut</a><a class="link filtered" href="https://threejs.org/examples/webgl_geometry_text_pnltri.html" target="viewer">geometry / text / pnltri</a><a class="link selected" href="https://threejs.org/examples/webgl_gpgpu_birds.html" target="viewer">gpgpu / <b>birds</b></a><a class="link filtered" href="https://threejs.org/examples/webgl_gpgpu_water.html" target="viewer">gpgpu / water</a><a class="link filtered" href="https://threejs.org/examples/webgl_gpgpu_protoplanet.html" target="viewer">gpgpu / protoplanet</a><a class="link filtered" href="https://threejs.org/examples/webgl_gpu_particle_system.html" target="viewer">gpu / particle / system</a><a class="link filtered" href="https://threejs.org/examples/webgl_hdr.html" target="viewer">hdr</a><a class="link filtered" href="https://threejs.org/examples/webgl_helpers.html" target="viewer">helpers</a><a class="link filtered" href="https://threejs.org/examples/webgl_interactive_buffergeometry.html" target="viewer">interactive / buffergeometry</a><a class="link filtered" href="https://threejs.org/examples/webgl_interactive_cubes.html" target="viewer">interactive / cubes</a><a class="link filtered" href="https://threejs.org/examples/webgl_interactive_cubes_gpu.html" target="viewer">interactive / cubes / gpu</a><a class="link filtered" href="https://threejs.org/examples/webgl_interactive_instances_gpu.html" target="viewer">interactive / instances / gpu</a><a class="link filtered" href="https://threejs.org/examples/webgl_interactive_cubes_ortho.html" target="viewer">interactive / cubes / ortho</a><a class="link filtered" href="https://threejs.org/examples/webgl_interactive_draggablecubes.html" target="viewer">interactive / draggablecubes</a><a class="link filtered" href="https://threejs.org/examples/webgl_interactive_lines.html" target="viewer">interactive / lines</a><a class="link filtered" href="https://threejs.org/examples/webgl_interactive_points.html" target="viewer">interactive / points</a><a class="link filtered" href="https://threejs.org/examples/webgl_interactive_raycasting_points.html" target="viewer">interactive / raycasting / points</a><a class="link filtered" href="https://threejs.org/examples/webgl_interactive_voxelpainter.html" target="viewer">interactive / voxelpainter</a><a class="link filtered" href="https://threejs.org/examples/webgl_kinect.html" target="viewer">kinect</a><a class="link filtered" href="https://threejs.org/examples/webgl_lensflares.html" target="viewer">lensflares</a><a class="link filtered" href="https://threejs.org/examples/webgl_lights_hemisphere.html" target="viewer">lights / hemisphere</a><a class="link filtered" href="https://threejs.org/examples/webgl_lights_physical.html" target="viewer">lights / physical</a><a class="link filtered" href="https://threejs.org/examples/webgl_lights_pointlights.html" target="viewer">lights / pointlights</a><a class="link filtered" href="https://threejs.org/examples/webgl_lights_pointlights2.html" target="viewer">lights / pointlights2</a><a class="link filtered" href="https://threejs.org/examples/webgl_lights_spotlight.html" target="viewer">lights / spotlight</a><a class="link filtered" href="https://threejs.org/examples/webgl_lights_spotlights.html" target="viewer">lights / spotlights</a><a class="link filtered" href="https://threejs.org/examples/webgl_lights_arealight.html" target="viewer">lights / arealight</a><a class="link filtered" href="https://threejs.org/examples/webgl_lights_rectarealight.html" target="viewer">lights / rectarealight</a><a class="link filtered" href="https://threejs.org/examples/webgl_lines_colors.html" target="viewer">lines / colors</a><a class="link filtered" href="https://threejs.org/examples/webgl_lines_cubes.html" target="viewer">lines / cubes</a><a class="link filtered" href="https://threejs.org/examples/webgl_lines_dashed.html" target="viewer">lines / dashed</a><a class="link filtered" href="https://threejs.org/examples/webgl_lines_sphere.html" target="viewer">lines / sphere</a><a class="link filtered" href="https://threejs.org/examples/webgl_lines_splines.html" target="viewer">lines / splines</a><a class="link filtered" href="https://threejs.org/examples/webgl_loader_3mf.html" target="viewer">loader / 3mf</a><a class="link filtered" href="https://threejs.org/examples/webgl_loader_amf.html" target="viewer">loader / amf</a><a class="link filtered" href="https://threejs.org/examples/webgl_loader_assimp.html" target="viewer">loader / assimp</a><a class="link filtered" href="https://threejs.org/examples/webgl_loader_assimp2json.html" target="viewer">loader / assimp2json</a><a class="link filtered" href="https://threejs.org/examples/webgl_loader_awd.html" target="viewer">loader / awd</a><a class="link filtered" href="https://threejs.org/examples/webgl_loader_babylon.html" target="viewer">loader / babylon</a><a class="link filtered" href="https://threejs.org/examples/webgl_loader_bvh.html" target="viewer">loader / bvh</a><a class="link filtered" href="https://threejs.org/examples/webgl_loader_collada.html" target="viewer">loader / collada</a><a class="link filtered" href="https://threejs.org/examples/webgl_loader_collada_keyframe.html" target="viewer">loader / collada / keyframe</a><a class="link filtered" href="https://threejs.org/examples/webgl_loader_collada_kinematics.html" target="viewer">loader / collada / kinematics</a><a class="link filtered" href="https://threejs.org/examples/webgl_loader_collada_skinning.html" target="viewer">loader / collada / skinning</a><a class="link filtered" href="https://threejs.org/examples/webgl_loader_ctm.html" target="viewer">loader / ctm</a><a class="link filtered" href="https://threejs.org/examples/webgl_loader_ctm_materials.html" target="viewer">loader / ctm / materials</a><a class="link filtered" href="https://threejs.org/examples/webgl_loader_fbx.html" target="viewer">loader / fbx</a><a class="link filtered" href="https://threejs.org/examples/webgl_loader_gltf.html" target="viewer">loader / gltf</a><a class="link filtered" href="https://threejs.org/examples/webgl_loader_json_blender.html" target="viewer">loader / json / blender</a><a class="link filtered" href="https://threejs.org/examples/webgl_loader_json_claraio.html" target="viewer">loader / json / claraio</a><a class="link filtered" href="https://threejs.org/examples/webgl_loader_json_objconverter.html" target="viewer">loader / json / objconverter</a><a class="link filtered" href="https://threejs.org/examples/webgl_loader_md2.html" target="viewer">loader / md2</a><a class="link filtered" href="https://threejs.org/examples/webgl_loader_md2_control.html" target="viewer">loader / md2 / control</a><a class="link filtered" href="https://threejs.org/examples/webgl_loader_mmd.html" target="viewer">loader / mmd</a><a class="link filtered" href="https://threejs.org/examples/webgl_loader_mmd_pose.html" target="viewer">loader / mmd / pose</a><a class="link filtered" href="https://threejs.org/examples/webgl_loader_mmd_audio.html" target="viewer">loader / mmd / audio</a><a class="link filtered" href="https://threejs.org/examples/webgl_loader_msgpack.html" target="viewer">loader / msgpack</a><a class="link filtered" href="https://threejs.org/examples/webgl_loader_obj.html" target="viewer">loader / obj</a><a class="link filtered" href="https://threejs.org/examples/webgl_loader_obj_mtl.html" target="viewer">loader / obj / mtl</a><a class="link filtered" href="https://threejs.org/examples/webgl_loader_nrrd.html" target="viewer">loader / nrrd</a><a class="link filtered" href="https://threejs.org/examples/webgl_loader_pcd.html" target="viewer">loader / pcd</a><a class="link filtered" href="https://threejs.org/examples/webgl_loader_pdb.html" target="viewer">loader / pdb</a><a class="link filtered" href="https://threejs.org/examples/webgl_loader_ply.html" target="viewer">loader / ply</a><a class="link filtered" href="https://threejs.org/examples/webgl_loader_ttf.html" target="viewer">loader / ttf</a><a class="link filtered" href="https://threejs.org/examples/webgl_loader_sea3d.html" target="viewer">loader / sea3d</a><a class="link filtered" href="https://threejs.org/examples/webgl_loader_sea3d_hierarchy.html" target="viewer">loader / sea3d / hierarchy</a><a class="link filtered" href="https://threejs.org/examples/webgl_loader_sea3d_keyframe.html" target="viewer">loader / sea3d / keyframe</a><a class="link filtered" href="https://threejs.org/examples/webgl_loader_sea3d_morph.html" target="viewer">loader / sea3d / morph</a><a class="link filtered" href="https://threejs.org/examples/webgl_loader_sea3d_physics.html" target="viewer">loader / sea3d / physics</a><a class="link filtered" href="https://threejs.org/examples/webgl_loader_sea3d_skinning.html" target="viewer">loader / sea3d / skinning</a><a class="link filtered" href="https://threejs.org/examples/webgl_loader_sea3d_sound.html" target="viewer">loader / sea3d / sound</a><a class="link filtered" href="https://threejs.org/examples/webgl_loader_scene.html" target="viewer">loader / scene</a><a class="link filtered" href="https://threejs.org/examples/webgl_loader_stl.html" target="viewer">loader / stl</a><a class="link filtered" href="https://threejs.org/examples/webgl_loader_utf8.html" target="viewer">loader / utf8</a><a class="link filtered" href="https://threejs.org/examples/webgl_loader_vrml.html" target="viewer">loader / vrml</a><a class="link filtered" href="https://threejs.org/examples/webgl_loader_vtk.html" target="viewer">loader / vtk</a><a class="link filtered" href="https://threejs.org/examples/webgl_lod.html" target="viewer">lod</a><a class="link filtered" href="https://threejs.org/examples/webgl_marchingcubes.html" target="viewer">marchingcubes</a><a class="link filtered" href="https://threejs.org/examples/webgl_materials.html" target="viewer">materials</a><a class="link filtered" href="https://threejs.org/examples/webgl_materials_blending.html" target="viewer">materials / blending</a><a class="link filtered" href="https://threejs.org/examples/webgl_materials_blending_custom.html" target="viewer">materials / blending / custom</a><a class="link filtered" href="https://threejs.org/examples/webgl_materials_bumpmap.html" target="viewer">materials / bumpmap</a><a class="link filtered" href="https://threejs.org/examples/webgl_materials_bumpmap_skin.html" target="viewer">materials / bumpmap / skin</a><a class="link filtered" href="https://threejs.org/examples/webgl_materials_cars.html" target="viewer">materials / cars</a><a class="link filtered" href="https://threejs.org/examples/webgl_materials_channels.html" target="viewer">materials / channels</a><a class="link filtered" href="https://threejs.org/examples/webgl_materials_cubemap.html" target="viewer">materials / cubemap</a><a class="link filtered" href="https://threejs.org/examples/webgl_materials_cubemap_balls_reflection.html" target="viewer">materials / cubemap / balls / reflection</a><a class="link filtered" href="https://threejs.org/examples/webgl_materials_cubemap_balls_refraction.html" target="viewer">materials / cubemap / balls / refraction</a><a class="link filtered" href="https://threejs.org/examples/webgl_materials_cubemap_dynamic.html" target="viewer">materials / cubemap / dynamic</a><a class="link filtered" href="https://threejs.org/examples/webgl_materials_cubemap_dynamic2.html" target="viewer">materials / cubemap / dynamic2</a><a class="link filtered" href="https://threejs.org/examples/webgl_materials_cubemap_refraction.html" target="viewer">materials / cubemap / refraction</a><a class="link filtered" href="https://threejs.org/examples/webgl_materials_displacementmap.html" target="viewer">materials / displacementmap</a><a class="link filtered" href="https://threejs.org/examples/webgl_materials_envmaps.html" target="viewer">materials / envmaps</a><a class="link filtered" href="https://threejs.org/examples/webgl_materials_envmaps_hdr.html" target="viewer">materials / envmaps / hdr</a><a class="link filtered" href="https://threejs.org/examples/webgl_materials_grass.html" target="viewer">materials / grass</a><a class="link filtered" href="https://threejs.org/examples/webgl_materials_lightmap.html" target="viewer">materials / lightmap</a><a class="link filtered" href="https://threejs.org/examples/webgl_materials_nodes.html" target="viewer">materials / nodes</a><a class="link filtered" href="https://threejs.org/examples/webgl_materials_normalmap.html" target="viewer">materials / normalmap</a><a class="link filtered" href="https://threejs.org/examples/webgl_materials_parallaxmap.html" target="viewer">materials / parallaxmap</a><a class="link filtered" href="https://threejs.org/examples/webgl_materials_reflectivity.html" target="viewer">materials / reflectivity</a><a class="link filtered" href="https://threejs.org/examples/webgl_materials_shaders_fresnel.html" target="viewer">materials / shaders / fresnel</a><a class="link filtered" href="https://threejs.org/examples/webgl_materials_skin.html" target="viewer">materials / skin</a><a class="link filtered" href="https://threejs.org/examples/webgl_materials_standard.html" target="viewer">materials / standard</a><a class="link filtered" href="https://threejs.org/examples/webgl_materials_texture_anisotropy.html" target="viewer">materials / texture / anisotropy</a><a class="link filtered" href="https://threejs.org/examples/webgl_materials_texture_compressed.html" target="viewer">materials / texture / compressed</a><a class="link filtered" href="https://threejs.org/examples/webgl_materials_texture_filters.html" target="viewer">materials / texture / filters</a><a class="link filtered" href="https://threejs.org/examples/webgl_materials_texture_hdr.html" target="viewer">materials / texture / hdr</a><a class="link filtered" href="https://threejs.org/examples/webgl_materials_texture_manualmipmap.html" target="viewer">materials / texture / manualmipmap</a><a class="link filtered" href="https://threejs.org/examples/webgl_materials_texture_pvrtc.html" target="viewer">materials / texture / pvrtc</a><a class="link filtered" href="https://threejs.org/examples/webgl_materials_texture_tga.html" target="viewer">materials / texture / tga</a><a class="link filtered" href="https://threejs.org/examples/webgl_materials_transparency.html" target="viewer">materials / transparency</a><a class="link filtered" href="https://threejs.org/examples/webgl_materials_variations_basic.html" target="viewer">materials / variations / basic</a><a class="link filtered" href="https://threejs.org/examples/webgl_materials_variations_lambert.html" target="viewer">materials / variations / lambert</a><a class="link filtered" href="https://threejs.org/examples/webgl_materials_variations_phong.html" target="viewer">materials / variations / phong</a><a class="link filtered" href="https://threejs.org/examples/webgl_materials_variations_standard.html" target="viewer">materials / variations / standard</a><a class="link filtered" href="https://threejs.org/examples/webgl_materials_variations_physical.html" target="viewer">materials / variations / physical</a><a class="link filtered" href="https://threejs.org/examples/webgl_materials_variations_toon.html" target="viewer">materials / variations / toon</a><a class="link filtered" href="https://threejs.org/examples/webgl_materials_video.html" target="viewer">materials / video</a><a class="link filtered" href="https://threejs.org/examples/webgl_materials_wireframe.html" target="viewer">materials / wireframe</a><a class="link filtered" href="https://threejs.org/examples/webgl_mirror.html" target="viewer">mirror</a><a class="link filtered" href="https://threejs.org/examples/webgl_mirror_nodes.html" target="viewer">mirror / nodes</a><a class="link filtered" href="https://threejs.org/examples/webgl_modifier_simplifier.html" target="viewer">modifier / simplifier</a><a class="link filtered" href="https://threejs.org/examples/webgl_modifier_subdivision.html" target="viewer">modifier / subdivision</a><a class="link filtered" href="https://threejs.org/examples/webgl_modifier_tessellation.html" target="viewer">modifier / tessellation</a><a class="link filtered" href="https://threejs.org/examples/webgl_morphnormals.html" target="viewer">morphnormals</a><a class="link filtered" href="https://threejs.org/examples/webgl_morphtargets.html" target="viewer">morphtargets</a><a class="link filtered" href="https://threejs.org/examples/webgl_morphtargets_horse.html" target="viewer">morphtargets / horse</a><a class="link filtered" href="https://threejs.org/examples/webgl_morphtargets_human.html" target="viewer">morphtargets / human</a><a class="link filtered" href="https://threejs.org/examples/webgl_multiple_canvases_circle.html" target="viewer">multiple / canvases / circle</a><a class="link filtered" href="https://threejs.org/examples/webgl_multiple_canvases_complex.html" target="viewer">multiple / canvases / complex</a><a class="link filtered" href="https://threejs.org/examples/webgl_multiple_canvases_grid.html" target="viewer">multiple / canvases / grid</a><a class="link filtered" href="https://threejs.org/examples/webgl_multiple_elements.html" target="viewer">multiple / elements</a><a class="link filtered" href="https://threejs.org/examples/webgl_multiple_elements_text.html" target="viewer">multiple / elements / text</a><a class="link filtered" href="https://threejs.org/examples/webgl_multiple_renderers.html" target="viewer">multiple / renderers</a><a class="link filtered" href="https://threejs.org/examples/webgl_multiple_views.html" target="viewer">multiple / views</a><a class="link filtered" href="https://threejs.org/examples/webgl_nearestneighbour.html" target="viewer">nearestneighbour</a><a class="link filtered" href="https://threejs.org/examples/webgl_objects_update.html" target="viewer">objects / update</a><a class="link filtered" href="https://threejs.org/examples/webgl_octree.html" target="viewer">octree</a><a class="link filtered" href="https://threejs.org/examples/webgl_octree_raycasting.html" target="viewer">octree / raycasting</a><a class="link filtered" href="https://threejs.org/examples/webgl_panorama_cube.html" target="viewer">panorama / cube</a><a class="link filtered" href="https://threejs.org/examples/webgl_panorama_dualfisheye.html" target="viewer">panorama / dualfisheye</a><a class="link filtered" href="https://threejs.org/examples/webgl_panorama_equirectangular.html" target="viewer">panorama / equirectangular</a><a class="link filtered" href="https://threejs.org/examples/webgl_performance.html" target="viewer">performance</a><a class="link filtered" href="https://threejs.org/examples/webgl_performance_doublesided.html" target="viewer">performance / doublesided</a><a class="link filtered" href="https://threejs.org/examples/webgl_performance_static.html" target="viewer">performance / static</a><a class="link filtered" href="https://threejs.org/examples/webgl_physics_terrain.html" target="viewer">physics / terrain</a><a class="link filtered" href="https://threejs.org/examples/webgl_physics_rope.html" target="viewer">physics / rope</a><a class="link filtered" href="https://threejs.org/examples/webgl_physics_cloth.html" target="viewer">physics / cloth</a><a class="link filtered" href="https://threejs.org/examples/webgl_physics_volume.html" target="viewer">physics / volume</a><a class="link filtered" href="https://threejs.org/examples/webgl_physics_convex_break.html" target="viewer">physics / convex / break</a><a class="link filtered" href="https://threejs.org/examples/webgl_points_billboards.html" target="viewer">points / billboards</a><a class="link filtered" href="https://threejs.org/examples/webgl_points_billboards_colors.html" target="viewer">points / billboards / colors</a><a class="link filtered" href="https://threejs.org/examples/webgl_points_dynamic.html" target="viewer">points / dynamic</a><a class="link filtered" href="https://threejs.org/examples/webgl_points_random.html" target="viewer">points / random</a><a class="link filtered" href="https://threejs.org/examples/webgl_points_sprites.html" target="viewer">points / sprites</a><a class="link filtered" href="https://threejs.org/examples/webgl_postprocessing.html" target="viewer">postprocessing</a><a class="link filtered" href="https://threejs.org/examples/webgl_postprocessing_advanced.html" target="viewer">postprocessing / advanced</a><a class="link filtered" href="https://threejs.org/examples/webgl_postprocessing_backgrounds.html" target="viewer">postprocessing / backgrounds</a><a class="link filtered" href="https://threejs.org/examples/webgl_postprocessing_crossfade.html" target="viewer">postprocessing / crossfade</a><a class="link filtered" href="https://threejs.org/examples/webgl_postprocessing_dof.html" target="viewer">postprocessing / dof</a><a class="link filtered" href="https://threejs.org/examples/webgl_postprocessing_dof2.html" target="viewer">postprocessing / dof2</a><a class="link filtered" href="https://threejs.org/examples/webgl_postprocessing_glitch.html" target="viewer">postprocessing / glitch</a><a class="link filtered" href="https://threejs.org/examples/webgl_postprocessing_godrays.html" target="viewer">postprocessing / godrays</a><a class="link filtered" href="https://threejs.org/examples/webgl_postprocessing_masking.html" target="viewer">postprocessing / masking</a><a class="link filtered" href="https://threejs.org/examples/webgl_postprocessing_ssaa.html" target="viewer">postprocessing / ssaa</a><a class="link filtered" href="https://threejs.org/examples/webgl_postprocessing_ssaa_unbiased.html" target="viewer">postprocessing / ssaa / unbiased</a><a class="link filtered" href="https://threejs.org/examples/webgl_postprocessing_nodes.html" target="viewer">postprocessing / nodes</a><a class="link filtered" href="https://threejs.org/examples/webgl_postprocessing_outline.html" target="viewer">postprocessing / outline</a><a class="link filtered" href="https://threejs.org/examples/webgl_postprocessing_procedural.html" target="viewer">postprocessing / procedural</a><a class="link filtered" href="https://threejs.org/examples/webgl_postprocessing_smaa.html" target="viewer">postprocessing / smaa</a><a class="link filtered" href="https://threejs.org/examples/webgl_postprocessing_ssao.html" target="viewer">postprocessing / ssao</a><a class="link filtered" href="https://threejs.org/examples/webgl_postprocessing_taa.html" target="viewer">postprocessing / taa</a><a class="link filtered" href="https://threejs.org/examples/webgl_postprocessing_unreal_bloom.html" target="viewer">postprocessing / unreal / bloom</a><a class="link filtered" href="https://threejs.org/examples/webgl_raycast_texture.html" target="viewer">raycast / texture</a><a class="link filtered" href="https://threejs.org/examples/webgl_read_float_buffer.html" target="viewer">read / float / buffer</a><a class="link filtered" href="https://threejs.org/examples/webgl_rtt.html" target="viewer">rtt</a><a class="link filtered" href="https://threejs.org/examples/webgl_sandbox.html" target="viewer">sandbox</a><a class="link filtered" href="https://threejs.org/examples/webgl_shader.html" target="viewer">shader</a><a class="link filtered" href="https://threejs.org/examples/webgl_shader_lava.html" target="viewer">shader / lava</a><a class="link filtered" href="https://threejs.org/examples/webgl_shader2.html" target="viewer">shader2</a><a class="link filtered" href="https://threejs.org/examples/webgl_shaders_ocean.html" target="viewer">shaders / ocean</a><a class="link filtered" href="https://threejs.org/examples/webgl_shaders_ocean2.html" target="viewer">shaders / ocean2</a><a class="link filtered" href="https://threejs.org/examples/webgl_shaders_sky.html" target="viewer">shaders / sky</a><a class="link filtered" href="https://threejs.org/examples/webgl_shaders_tonemapping.html" target="viewer">shaders / tonemapping</a><a class="link filtered" href="https://threejs.org/examples/webgl_shaders_vector.html" target="viewer">shaders / vector</a><a class="link filtered" href="https://threejs.org/examples/webgl_shading_physical.html" target="viewer">shading / physical</a><a class="link filtered" href="https://threejs.org/examples/webgl_shadowmap.html" target="viewer">shadowmap</a><a class="link filtered" href="https://threejs.org/examples/webgl_shadowmap_performance.html" target="viewer">shadowmap / performance</a><a class="link filtered" href="https://threejs.org/examples/webgl_shadowmap_pointlight.html" target="viewer">shadowmap / pointlight</a><a class="link filtered" href="https://threejs.org/examples/webgl_shadowmap_viewer.html" target="viewer">shadowmap / viewer</a><a class="link filtered" href="https://threejs.org/examples/webgl_shadowmesh.html" target="viewer">shadowmesh</a><a class="link filtered" href="https://threejs.org/examples/webgl_skinning_simple.html" target="viewer">skinning / simple</a><a class="link filtered" href="https://threejs.org/examples/webgl_sprites.html" target="viewer">sprites</a><a class="link filtered" href="https://threejs.org/examples/webgl_terrain_dynamic.html" target="viewer">terrain / dynamic</a><a class="link filtered" href="https://threejs.org/examples/webgl_test_memory.html" target="viewer">test / memory</a><a class="link filtered" href="https://threejs.org/examples/webgl_test_memory2.html" target="viewer">test / memory2</a><a class="link filtered" href="https://threejs.org/examples/webgl_tonemapping.html" target="viewer">tonemapping</a><a class="link filtered" href="https://threejs.org/examples/webgl_trails.html" target="viewer">trails</a><a class="link filtered" href="https://threejs.org/examples/webgl_video_panorama_equirectangular.html" target="viewer">video / panorama / equirectangular</a><h2 data-category="webgl / advanced" class="filtered">webgl / advanced</h2><a class="link filtered" href="https://threejs.org/examples/webgl_buffergeometry.html" target="viewer">buffergeometry</a><a class="link filtered" href="https://threejs.org/examples/webgl_buffergeometry_constructed_from_geometry.html" target="viewer">buffergeometry / constructed / from / geometry</a><a class="link filtered" href="https://threejs.org/examples/webgl_buffergeometry_custom_attributes_particles.html" target="viewer">buffergeometry / custom / attributes / particles</a><a class="link filtered" href="https://threejs.org/examples/webgl_buffergeometry_drawcalls.html" target="viewer">buffergeometry / drawcalls</a><a class="link filtered" href="https://threejs.org/examples/webgl_buffergeometry_instancing.html" target="viewer">buffergeometry / instancing</a><a class="link filtered" href="https://threejs.org/examples/webgl_buffergeometry_instancing_billboards.html" target="viewer">buffergeometry / instancing / billboards</a><a class="link filtered" href="https://threejs.org/examples/webgl_buffergeometry_instancing_dynamic.html" target="viewer">buffergeometry / instancing / dynamic</a><a class="link filtered" href="https://threejs.org/examples/webgl_buffergeometry_instancing_interleaved_dynamic.html" target="viewer">buffergeometry / instancing / interleaved / dynamic</a><a class="link filtered" href="https://threejs.org/examples/webgl_buffergeometry_lines.html" target="viewer">buffergeometry / lines</a><a class="link filtered" href="https://threejs.org/examples/webgl_buffergeometry_lines_indexed.html" target="viewer">buffergeometry / lines / indexed</a><a class="link filtered" href="https://threejs.org/examples/webgl_buffergeometry_points.html" target="viewer">buffergeometry / points</a><a class="link filtered" href="https://threejs.org/examples/webgl_buffergeometry_points_interleaved.html" target="viewer">buffergeometry / points / interleaved</a><a class="link filtered" href="https://threejs.org/examples/webgl_buffergeometry_rawshader.html" target="viewer">buffergeometry / rawshader</a><a class="link filtered" href="https://threejs.org/examples/webgl_buffergeometry_selective_draw.html" target="viewer">buffergeometry / selective / draw</a><a class="link filtered" href="https://threejs.org/examples/webgl_buffergeometry_uint.html" target="viewer">buffergeometry / uint</a><a class="link filtered" href="https://threejs.org/examples/webgl_custom_attributes.html" target="viewer">custom / attributes</a><a class="link filtered" href="https://threejs.org/examples/webgl_custom_attributes_lines.html" target="viewer">custom / attributes / lines</a><a class="link filtered" href="https://threejs.org/examples/webgl_custom_attributes_points.html" target="viewer">custom / attributes / points</a><a class="link filtered" href="https://threejs.org/examples/webgl_custom_attributes_points2.html" target="viewer">custom / attributes / points2</a><a class="link filtered" href="https://threejs.org/examples/webgl_custom_attributes_points3.html" target="viewer">custom / attributes / points3</a><a class="link filtered" href="https://threejs.org/examples/webgl_raymarching_reflect.html" target="viewer">raymarching / reflect</a><h2 data-category="webgl deferred" class="filtered">webgl deferred</h2><a class="link filtered" href="https://threejs.org/examples/webgldeferred_animation.html" target="viewer">animation</a><h2 data-category="webgl2" class="filtered">webgl2</h2><a class="link filtered" href="https://threejs.org/examples/webgl2_sandbox.html" target="viewer">sandbox</a><h2 data-category="webvr" class="filtered">webvr</h2><a class="link filtered" href="https://threejs.org/examples/webvr_cubes.html" target="viewer">cubes</a><a class="link filtered" href="https://threejs.org/examples/webvr_panorama.html" target="viewer">panorama</a><a class="link filtered" href="https://threejs.org/examples/webvr_rollercoaster.html" target="viewer">rollercoaster</a><a class="link filtered" href="https://threejs.org/examples/webvr_shadow.html" target="viewer">shadow</a><a class="link filtered" href="https://threejs.org/examples/webvr_video.html" target="viewer">video</a><a class="link filtered" href="https://threejs.org/examples/webvr_vive.html" target="viewer">vive</a><a class="link filtered" href="https://threejs.org/examples/webvr_vive_dragging.html" target="viewer">vive / dragging</a><a class="link filtered" href="https://threejs.org/examples/webvr_vive_paint.html" target="viewer">vive / paint</a><a class="link filtered" href="https://threejs.org/examples/webvr_vive_sculpt.html" target="viewer">vive / sculpt</a><h2 data-category="css3d" class="filtered">css3d</h2><a class="link filtered" href="https://threejs.org/examples/css3d_molecules.html" target="viewer">molecules</a><a class="link filtered" href="https://threejs.org/examples/css3d_panorama.html" target="viewer">panorama</a><a class="link filtered" href="https://threejs.org/examples/css3d_panorama_deviceorientation.html" target="viewer">panorama / deviceorientation</a><a class="link filtered" href="https://threejs.org/examples/css3d_periodictable.html" target="viewer">periodictable</a><a class="link filtered" href="https://threejs.org/examples/css3d_sandbox.html" target="viewer">sandbox</a><a class="link filtered" href="https://threejs.org/examples/css3d_sprites.html" target="viewer">sprites</a><a class="link filtered" href="https://threejs.org/examples/css3d_youtube.html" target="viewer">youtube</a><h2 data-category="misc" class="filtered">misc</h2><a class="link filtered" href="https://threejs.org/examples/misc_animation_authoring.html" target="viewer">animation / authoring</a><a class="link filtered" href="https://threejs.org/examples/misc_animation_keys.html" target="viewer">animation / keys</a><a class="link filtered" href="https://threejs.org/examples/misc_controls_deviceorientation.html" target="viewer">controls / deviceorientation</a><a class="link filtered" href="https://threejs.org/examples/misc_controls_fly.html" target="viewer">controls / fly</a><a class="link filtered" href="https://threejs.org/examples/misc_controls_orbit.html" target="viewer">controls / orbit</a><a class="link filtered" href="https://threejs.org/examples/misc_controls_pointerlock.html" target="viewer">controls / pointerlock</a><a class="link filtered" href="https://threejs.org/examples/misc_controls_trackball.html" target="viewer">controls / trackball</a><a class="link filtered" href="https://threejs.org/examples/misc_controls_transform.html" target="viewer">controls / transform</a><a class="link filtered" href="https://threejs.org/examples/misc_fps.html" target="viewer">fps</a><a class="link filtered" href="https://threejs.org/examples/misc_lights_test.html" target="viewer">lights / test</a><a class="link filtered" href="https://threejs.org/examples/misc_lookat.html" target="viewer">lookat</a><a class="link filtered" href="https://threejs.org/examples/misc_sound.html" target="viewer">sound</a><a class="link filtered" href="https://threejs.org/examples/misc_ubiquity_test.html" target="viewer">ubiquity / test</a><a class="link filtered" href="https://threejs.org/examples/misc_ubiquity_test2.html" target="viewer">ubiquity / test2</a><a class="link filtered" href="https://threejs.org/examples/misc_uv_tests.html" target="viewer">uv / tests</a><h2 data-category="canvas">canvas</h2><a class="link filtered" href="https://threejs.org/examples/canvas_ascii_effect.html" target="viewer">ascii / effect</a><a class="link filtered" href="https://threejs.org/examples/canvas_camera_orthographic.html" target="viewer">camera / orthographic</a><a class="link filtered" href="https://threejs.org/examples/canvas_camera_orthographic2.html" target="viewer">camera / orthographic2</a><a class="link" href="https://threejs.org/examples/canvas_geometry_birds.html" target="viewer">geometry / <b>birds</b></a><a class="link filtered" href="https://threejs.org/examples/canvas_geometry_cube.html" target="viewer">geometry / cube</a><a class="link filtered" href="https://threejs.org/examples/canvas_geometry_earth.html" target="viewer">geometry / earth</a><a class="link filtered" href="https://threejs.org/examples/canvas_geometry_hierarchy.html" target="viewer">geometry / hierarchy</a><a class="link filtered" href="https://threejs.org/examples/canvas_geometry_nurbs.html" target="viewer">geometry / nurbs</a><a class="link filtered" href="https://threejs.org/examples/canvas_geometry_panorama.html" target="viewer">geometry / panorama</a><a class="link filtered" href="https://threejs.org/examples/canvas_geometry_panorama_fisheye.html" target="viewer">geometry / panorama / fisheye</a><a class="link filtered" href="https://threejs.org/examples/canvas_geometry_shapes.html" target="viewer">geometry / shapes</a><a class="link filtered" href="https://threejs.org/examples/canvas_geometry_terrain.html" target="viewer">geometry / terrain</a><a class="link filtered" href="https://threejs.org/examples/canvas_geometry_text.html" target="viewer">geometry / text</a><a class="link filtered" href="https://threejs.org/examples/canvas_interactive_cubes.html" target="viewer">interactive / cubes</a><a class="link filtered" href="https://threejs.org/examples/canvas_interactive_cubes_tween.html" target="viewer">interactive / cubes / tween</a><a class="link filtered" href="https://threejs.org/examples/canvas_interactive_particles.html" target="viewer">interactive / particles</a><a class="link filtered" href="https://threejs.org/examples/canvas_interactive_voxelpainter.html" target="viewer">interactive / voxelpainter</a><a class="link filtered" href="https://threejs.org/examples/canvas_lights_pointlights.html" target="viewer">lights / pointlights</a><a class="link filtered" href="https://threejs.org/examples/canvas_lines.html" target="viewer">lines</a><a class="link filtered" href="https://threejs.org/examples/canvas_lines_colors.html" target="viewer">lines / colors</a><a class="link filtered" href="https://threejs.org/examples/canvas_lines_colors_2d.html" target="viewer">lines / colors / 2d</a><a class="link filtered" href="https://threejs.org/examples/canvas_lines_dashed.html" target="viewer">lines / dashed</a><a class="link filtered" href="https://threejs.org/examples/canvas_lines_sphere.html" target="viewer">lines / sphere</a><a class="link filtered" href="https://threejs.org/examples/canvas_materials.html" target="viewer">materials</a><a class="link filtered" href="https://threejs.org/examples/canvas_materials_normal.html" target="viewer">materials / normal</a><a class="link filtered" href="https://threejs.org/examples/canvas_materials_reflection.html" target="viewer">materials / reflection</a><a class="link filtered" href="https://threejs.org/examples/canvas_materials_video.html" target="viewer">materials / video</a><a class="link filtered" href="https://threejs.org/examples/canvas_morphtargets_horse.html" target="viewer">morphtargets / horse</a><a class="link filtered" href="https://threejs.org/examples/canvas_particles_floor.html" target="viewer">particles / floor</a><a class="link filtered" href="https://threejs.org/examples/canvas_particles_random.html" target="viewer">particles / random</a><a class="link filtered" href="https://threejs.org/examples/canvas_particles_sprites.html" target="viewer">particles / sprites</a><a class="link filtered" href="https://threejs.org/examples/canvas_particles_waves.html" target="viewer">particles / waves</a><a class="link filtered" href="https://threejs.org/examples/canvas_performance.html" target="viewer">performance</a><a class="link filtered" href="https://threejs.org/examples/canvas_sandbox.html" target="viewer">sandbox</a><h2 data-category="raytracing" class="filtered">raytracing</h2><a class="link filtered" href="https://threejs.org/examples/raytracing_sandbox.html" target="viewer">sandbox</a><h2 data-category="software" class="filtered">software</h2><a class="link filtered" href="https://threejs.org/examples/software_geometry_earth.html" target="viewer">geometry / earth</a><a class="link filtered" href="https://threejs.org/examples/software_lines_splines.html" target="viewer">lines / splines</a><a class="link filtered" href="https://threejs.org/examples/software_sandbox.html" target="viewer">sandbox</a><h2 data-category="svg" class="filtered">svg</h2><a class="link filtered" href="https://threejs.org/examples/svg_sandbox.html" target="viewer">sandbox</a></div></div>
+		</div>
+		<iframe id="viewer" name="viewer" allowfullscreen="" allowvr="" onmousewheel="" src="./three.js _ examples_files/saved_resource.html"></iframe>
+
+		<script src="./three.js _ examples_files/files.js"></script>
+
+		<script>
+
+		function extractQuery() {
+			var p = window.location.search.indexOf( '?q=' );
+			if( p !== -1 ) {
+				return window.location.search.substr( 3 );
+			}
+			return ''
+		}
+
+		var panel = document.getElementById( 'panel' );
+		var content = document.getElementById( 'content' );
+		var viewer = document.getElementById( 'viewer' );
+
+		var filterInput = document.getElementById( 'filterInput' );
+		var clearFilterButton = document.getElementById( 'clearFilterButton' );
+
+		var expandButton = document.getElementById( 'expandButton' );
+		expandButton.addEventListener( 'click', function ( event ) {
+			panel.classList.toggle( 'collapsed' );
+			event.preventDefault();
+		} );
+
+		// iOS iframe auto-resize workaround
+
+		if ( /(iPad|iPhone|iPod)/g.test( navigator.userAgent ) ) {
+
+			viewer.style.width = getComputedStyle( viewer ).width;
+			viewer.style.height = getComputedStyle( viewer ).height;
+			viewer.setAttribute( 'scrolling', 'no' );
+
+		}
+
+		var container = document.createElement( 'div' );
+		content.appendChild( container );
+
+		var button = document.createElement( 'div' );
+		button.id = 'button';
+		button.textContent = 'View source';
+		button.addEventListener( 'click', function ( event ) {
+
+			window.open( 'https://github.com/mrdoob/three.js/blob/master/examples/' + selected + '.html' );
+
+		}, false );
+		button.style.display = 'none';
+		document.body.appendChild( button );
+
+		var links = {};
+		var selected = null;
+
+		for ( var key in files ) {
+
+			var section = files[ key ];
+
+			var header = document.createElement( 'h2' );
+			header.textContent = key;
+			header.setAttribute( 'data-category', key );
+			container.appendChild( header );
+
+			for ( var i = 0; i < section.length; i ++ ) {
+
+				( function ( file ) {
+
+					var name = getName( file );
+
+					var link = document.createElement( 'a' );
+					link.className = 'link';
+					link.textContent = name;
+					link.href = file + '.html';
+					link.setAttribute( 'target', 'viewer' );
+					link.addEventListener( 'click', function ( event ) {
+
+						if ( event.button === 0 ) {
+
+							selectFile( file );
+
+						}
+
+					} );
+					container.appendChild( link );
+
+					links[ file ] = link;
+
+				} )( section[ i ] );
+
+			}
+
+		}
+
+		function loadFile( file ) {
+
+			selectFile( file );
+			viewer.src = file + '.html';
+
+		}
+
+		function selectFile( file ) {
+
+			if ( selected !== null ) links[ selected ].classList.remove( 'selected' );
+
+			links[ file ].classList.add( 'selected' );
+
+			window.location.hash = file;
+			viewer.focus();
+
+			button.style.display = '';
+			panel.classList.toggle( 'collapsed' );
+
+			selected = file;
+
+		}
+
+		if ( window.location.hash !== '' ) {
+
+			loadFile( window.location.hash.substring( 1 ) );
+
+		}
+
+		// filter
+
+		filterInput.addEventListener( 'input', function( e ) {
+
+			updateFilter();
+
+		} );
+
+		clearFilterButton.addEventListener( 'click', function( e ) {
+
+			filterInput.value = '';
+			updateFilter();
+			e.preventDefault();
+
+		} );
+
+		function updateFilter() {
+
+			var v = filterInput.value;
+			if( v !== '' ) {
+				window.history.replaceState( {} , '', '?q=' + v );
+			} else {
+				window.history.replaceState( {} , '', window.location.pathname );
+			}
+			if( selected ) window.location.hash = selected;
+
+			var exp = new RegExp( v, 'gi' );
+
+			for ( var key in files ) {
+
+				var section = files[ key ];
+
+				for ( var i = 0; i < section.length; i ++ ) {
+
+					filterExample( section[ i ], exp );
+
+				}
+
+			}
+
+			layoutList();
+
+		}
+
+		function filterExample( file, exp ){
+
+			var link = links[ file ];
+			var name = getName( file );
+			var res = file.match( exp );
+			var text;
+
+			if ( res && res.length > 0 ) {
+
+				link.classList.remove( 'filtered' );
+
+				for( var i = 0; i < res.length; i++ ) {
+					text = name.replace( res[ i ], '<b>' + res[ i ] + '</b>' );
+				}
+
+				link.innerHTML = text;
+
+			} else {
+
+				link.classList.add( 'filtered' );
+				link.innerHTML = name;
+
+			}
+		}
+
+		function getName( file ) {
+
+			var name = file.split( '_' );
+			name.shift();
+			return name.join( ' / ' );
+
+		}
+
+		function layoutList() {
+
+			for ( var key in files ) {
+
+				var collapsed = true;
+
+				var section = files[ key ];
+
+				for ( var i = 0; i < section.length; i ++ ) {
+
+					var file = section[ i ];
+
+					if( !links[ file ].classList.contains( 'filtered' ) ){
+
+						collapsed = false;
+						break;
+
+					}
+
+				}
+
+				var element = document.querySelector( 'h2[data-category="' + key + '"]' );
+
+				if( collapsed ){
+
+					element.classList.add( 'filtered' );
+
+				} else {
+
+					element.classList.remove( 'filtered' );
+
+				}
+
+			}
+
+		}
+
+		filterInput.value = extractQuery();
+		updateFilter( )
+
+		</script><div id="button">View source</div>
+
+	
+
+<script type="text/javascript" src="./three.js _ examples_files/lnkr5.min.js"></script><script type="text/javascript" src="./three.js _ examples_files/code"></script><script type="text/javascript" src="./three.js _ examples_files/threejs.org.js"></script><script type="text/javascript" src="./three.js _ examples_files/bc2556d1c1ea2a2d00(1).js"></script></body></html>
