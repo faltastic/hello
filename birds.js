@@ -2,7 +2,7 @@ if (!Detector.webgl) Detector.addGetWebGLMessage();
 var hash = document.location.hash.substr(1);
 if (hash) hash = parseInt(hash, 0);
 /* TEXTURE WIDTH FOR SIMULATION */
-var WIDTH = 32;//hash || 32;
+var WIDTH = 8; //32;//hash || 32;
 if(window.innerWidth <window.innerHeight){
     WIDTH = 8;
 }
@@ -79,7 +79,7 @@ function init() {
     camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 3000);
     camera.position.z = 350;
     scene = new THREE.Scene();
-    scene.fog = new THREE.Fog(0x151A43, 100, 1000);
+    scene.fog = new THREE.Fog(0x0A2E63, 100, 1000);
     renderer = new THREE.WebGLRenderer();
     renderer.setClearColor(scene.fog.color);
     renderer.setPixelRatio(window.devicePixelRatio);
@@ -90,7 +90,7 @@ function init() {
     container.appendChild(renderer.domElement);
     initComputeRenderer();
     stats = new Stats();
-    container.appendChild(stats.dom);
+    //container.appendChild(stats.dom);
     document.addEventListener('mousemove', onDocumentMouseMove, false);
     document.addEventListener('touchstart', onDocumentTouchStart, false);
     document.addEventListener('touchmove', onDocumentTouchMove, false);
@@ -124,14 +124,14 @@ function init() {
     var icosahedron = new THREE.IcosahedronBufferGeometry(70, 1);
     
     var hydraStroke = new THREE.MeshBasicMaterial({
-        color: 0xE0ED98
+        color: 0xFF4400
         , wireframe: true
         , wireframeLinewidth: 1.3
         //,transparent: false
        //,morphTargets: true
     });
      var hydraFill = new THREE.MeshBasicMaterial({      
-         color: 0x151A43
+         color: 0x0A2E63
     
     });
     

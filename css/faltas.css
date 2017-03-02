@@ -1,5 +1,5 @@
 body{
-    background: #151A43;
+    background: #0A2E63;
     font-family: 'Rubik', sans-serif;
 }
 
@@ -33,20 +33,96 @@ src: url('fonts/Noto-Naskh-Arabic.ttf') format('TrueType');
     clear: both; 
 }
 
-#afterBirds{
+.row{
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+#deskMenu{
+    direction: rtl;
     position: absolute;
-    top: 75vh;
-    left: 5%;
-    width: 90%;
+    top: 1em;
+    right: 2em;
+    width: 100%;
     line-height: 1.0em;
     font-size: 1em;
-    color: #E0ED98;
+    font-weight: 400;
+    color: #E3E3E3;
+    text-transform: uppercase;
+    margin-left: -2em;
 /*    font-family: 'Rubik', sans-serif;*/
     
 }
-#introLink{
-    line-height: 1.4em;
+
+#afterBirds{
+    position: absolute;
+    top: 75vh;
+    left: 0;
+    width: 100%;
+    line-height: 1.0em;
+    font-size: 1em;
+    color: #E3E3E3;
+/*    font-family: 'Rubik', sans-serif;*/
+    
+}
+#maintitle{
+    line-height: 1.25em;
     font-size: 2em;
     /*color: #fff;*/
-    font-weight: 700;
+    font-weight: 500;
+    text-align: center;
+    height: 12vh;
+}
+
+#subtitle{
+    line-height: 1.0em;
+    font-size: 1.2em;
+    font-weight: 400;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    padding-left: 10%;
+    padding-right: 10%;
+    text-align: center;
+    height: 13vh;
+}
+
+
+
+.brightsection{
+    line-height: 1.4em;
+    font-size: 1.4em;
+    background: #E3E3E3;
+    font-weight: 400;
+    color: #0A2E63;
+    padding-bottom: 1em;
+    padding-top: 2em;
+}
+
+.darksection{
+    line-height: 1.25em;
+    font-size: 1.25em;
+    font-weight: 400;
+    padding-bottom: 1em;
+    padding-top: 2em;
+}
+
+#aboutLinks a{
+    text-decoration: none;
+    color: #0A2E63;
+    transition: all 0.5s ease;
+}
+
+#aboutLinks a:hover{
+    text-decoration: none;
+    color: #ff4400;
+}
+
+button a{
+    text-decoration: none;
+    color: #E3E3E3;
+}
+
+button a:hover{
+    text-decoration: none;
+    color: #0A2E63; /*ff4400;*/
 }
