@@ -94,16 +94,16 @@ src: url('fonts/Noto-Naskh-Arabic.ttf') format('TrueType');
     background: #E3E3E3;
     font-weight: 400;
     color: #0A2E63;
-    padding-bottom: 1em;
-    padding-top: 2em;
+    padding-bottom: 3em;
+    padding-top: 3em;
 }
 
 .darksection{
     line-height: 1.25em;
     font-size: 1.25em;
     font-weight: 400;
-    padding-bottom: 1em;
-    padding-top: 2em;
+    padding-bottom: 3em;
+    padding-top: 3em;
 }
 
 #aboutLinks a{
@@ -125,4 +125,20 @@ button a{
 button a:hover{
     text-decoration: none;
     color: #0A2E63; /*ff4400;*/
+}
+
+#talk {
+    height: 2em;
+    width: 8em;
+    font-size: 1.25em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    background: #e3e3e3;
+    color: #0A2E63;
+}
+
+#talk:hover{
+    /*border-color: #ff4400;*/
+    background: #ff4400;
+    color: #e3e3e3;
 }

@@ -2,7 +2,7 @@ if (!Detector.webgl) Detector.addGetWebGLMessage();
 var hash = document.location.hash.substr(1);
 if (hash) hash = parseInt(hash, 0);
 /* TEXTURE WIDTH FOR SIMULATION */
-var WIDTH = 8; //32;//hash || 32;
+var WIDTH = 32; //32;//hash || 32;
 if(window.innerWidth <window.innerHeight){
     WIDTH = 8;
 }
