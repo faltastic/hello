@@ -142,3 +142,12 @@ button a:hover{
     background: #ff4400;
     color: #e3e3e3;
 }
+
+#work p{
+    line-height: 1.3em;
+    font-size: 0.75em;
+
+    text-align: center;
+    margin-bottom: 2em;
+    
+}

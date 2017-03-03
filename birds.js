@@ -3,10 +3,9 @@ var hash = document.location.hash.substr(1);
 if (hash) hash = parseInt(hash, 0);
 /* TEXTURE WIDTH FOR SIMULATION */
 var WIDTH = 32; //32;//hash || 32;
-if(window.innerWidth <window.innerHeight){
-    WIDTH = 8;
-}
 // 16 =256, 32 = 1024 , 64 = 409
+
+
 var BIRDS = WIDTH * WIDTH;
 // Custom Geometry - using 3 triangles each. No UVs, no normals currently.
 THREE.BirdGeometry = function () {
@@ -70,9 +69,13 @@ var positionVariable;
 var positionUniforms;
 var velocityUniforms;
 var birdUniforms;
-init();
-animate();
-
+if(window.innerWidth < window.innerHeight){
+ document.getElementById("threeCanvas").innerHTML =' <img src="img/intro-mobile.png" width="100%" height="auto" />'; 
+}
+else{
+    init();
+    animate();
+}
 function init() {
    // container = document.createElement('div');
    // document.body.appendChild(container);
@@ -100,7 +103,7 @@ function init() {
    var effectController = {
         seperation: 30.0
         , alignment: 20.0
-        , cohesion: 40.0
+        , cohesion: 90.0
         , freedom: 0.75
     };
     //var gui = new dat.GUI();
@@ -318,10 +321,10 @@ function render() {
     velocityUniforms.predator.value.set(0.5 * mouseX / windowHalfX, -0.5 * mouseY / windowHalfY, 0);
     mouseX = 10000;
     mouseY = 10000;
-     hydra[1].rotation.y += 0.0051;
-    hydra[1].rotation.z += 0.0051;
-    hydra[0].rotation.y += 0.0051;
-    hydra[0].rotation.z += 0.0051;
+     hydra[1].rotation.y += 0.00251;
+    hydra[1].rotation.z += 0.00251;
+    hydra[0].rotation.y += 0.00251;
+    hydra[0].rotation.z += 0.00251;
    
     gpuCompute.compute();
     birdUniforms.texturePosition.value = gpuCompute.getCurrentRenderTarget(positionVariable).texture;
