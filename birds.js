@@ -70,8 +70,11 @@ var positionUniforms;
 var velocityUniforms;
 var birdUniforms;
 if(window.innerWidth < window.innerHeight){
- // document.getElementById("mobileMenu").style.visibility = 'hidden';
-document.getElementById("deskMenu").style.visibility = 'hidden';
+
+ //   document.getElementById("divMobilemenu").style.visibility = 'hidden';
+//document.getElementById("deskMenu").style.visibility = 'hidden';
+    document.getElementById("myMenuDiv").innerHTML = '<ul id="mobileMenu"><li><a data-scroll href="#threeCanvas">Home</a></li><li><a data-scroll href="#about">About</a></li><li><a data-scroll href="#services">Services</a></li><li><a data-scroll href="#work">Work</a></li><li><a data-scroll href="#contact">Contact</a></li></ul>'; 
+    document.getElementById("myMenuDiv").style.visibility = 'hidden';
     document.getElementById("threeCanvas").innerHTML =' <img src="img/intro-mobile.png" width="100%" height="auto" />'; 
     
      $(function () {
@@ -82,7 +85,8 @@ document.getElementById("deskMenu").style.visibility = 'hidden';
 }
 else{
   //  document.getElementById("deskMenu").style.visibility = 'visible';
-    document.getElementById("divmobileMenu").style.visibility = 'hidden';
+    //document.getElementById("divMobilemenu").style.visibility = 'hidden';
+    document.getElementById("myMenuDiv").innerHTML = ' <div id="deskMenu"><img src="img/logo.png" height="32" width="auto" />&nbsp; &nbsp; &nbsp;<button> <a data-scroll href="#contact"> Contact </a></button> &nbsp; &nbsp;<button> <a data-scroll href="#work">Work </a></button> &nbsp; &nbsp;<button> <a data-scroll href="#services">Services </a></button> &nbsp; &nbsp;<button> <a data-scroll href="#about">About </a></button> &nbsp; &nbsp; </div>'; 
     smoothScroll.init({
         speed: 1000, // Integer. How fast to complete the scroll in milliseconds
     easing: 'easeOutCubic', // Easing pattern to use
