@@ -9,26 +9,19 @@
  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rubik:300,400,500,700,900" >
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/skeleton.css">
-     
-    <style>
-			
-
-			/*#info {
-				color: #000;
-				position: absolute;
-				top: 10px;
-				width: 100%;
-			}*/
-
-		</style>
     <link rel="stylesheet" href="css/faltas.css">
+
+      <link rel="stylesheet" href="css/slicknav.css" />
+    
+    <script src="js/jquery.js"></script>
+    <script src="js/jquery.slicknav.min.js"></script>
   
+
 </head>
     
 <!-- BODY ---------------------------------->
 <body>
-    <div id="threeCanvas">   </div>
-<!--
+    <!--
     <div id="info">
 			<a href="http://threejs.org" target="_blank">three.js</a> - <span id="birds"></span> webgl gpgpu birds<br/>
 			Select <span id="options"></span> birds<br/>
@@ -36,7 +29,21 @@
 
 		</div>
 -->
+    
+<div id="threeCanvas">   </div>
+
 <div class="container">
+<!-- MENU ---------------------------------->
+<div id="divMobilemenu">
+    <ul id="mobileMenu">
+            <li><a data-scroll href="#threeCanvas">Home</a></li>
+            <li><a data-scroll href="#about">About</a></li>
+            <li><a data-scroll href="#services">Services</a></li>
+         <li><a data-scroll href="#work">Work</a></li>
+         <li><a data-scroll href="#contact">Contact</a></li>
+        </ul> 
+    </div>
+
     <div id="deskMenu">
         <img src="img/logo.png" height="32" width="auto" /> 
         &nbsp; &nbsp; &nbsp;
@@ -45,6 +52,7 @@
         <button> <a data-scroll href="#work">Work </a></button> &nbsp; &nbsp;
         <button> <a data-scroll href="#services">Services </a></button> &nbsp; &nbsp;
         <button> <a data-scroll href="#about">About </a></button> &nbsp; &nbsp; </div>
+<!-- PAGE ---------------------------------->
     <div id="afterBirds">
         <div class="row" id="maintitle"> Youssef Faltas
             <br /> <small> Creative Web Developer</small>
@@ -76,8 +84,7 @@
             </div>
         </div>
            
-         
-        
+                
 <!-- SERVICES ------------------------------------------->        
         <div id="services" class="row darksection" >
              <center>
@@ -182,7 +189,9 @@
                 <p> A Dictionary of the Revolution is a project that documents the rapid amplification of public political speech following the revolution of 25 January 2011 in Egypt.</p>
             </div>
         </div>
-        <div class="row darksection" id="contact">
+        
+<!-- CONTACT ------------------------------------------->          
+        <div id="contact" class="row darksection" >
             <center>
                 
                 <h3> Want to discuss your new project?</h3>
@@ -213,15 +222,12 @@
 <!-- SCRIPTS ---------------------------------->
 
 <script src="js/smooth-scroll.min.js"></script>
-<script> smoothScroll.init({
-        speed: 1000, // Integer. How fast to complete the scroll in milliseconds
-    easing: 'easeOutCubic', // Easing pattern to use
-    offset: 0,// Integer. How far to offset the scrolling anchor location in pixels
-        
-    }); 
+
+<script>  
 </script>
+
     
-<script src="js/three.js"></script>
+<script src="js/three.min.js"></script>
 <script src="js/Detector.js"></script>
 <script src="js/libs/stats.min.js"></script>
 <script src="js/libs/dat.gui.min.js"></script>

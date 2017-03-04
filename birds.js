@@ -70,9 +70,25 @@ var positionUniforms;
 var velocityUniforms;
 var birdUniforms;
 if(window.innerWidth < window.innerHeight){
- document.getElementById("threeCanvas").innerHTML =' <img src="img/intro-mobile.png" width="100%" height="auto" />'; 
+ // document.getElementById("mobileMenu").style.visibility = 'hidden';
+document.getElementById("deskMenu").style.visibility = 'hidden';
+    document.getElementById("threeCanvas").innerHTML =' <img src="img/intro-mobile.png" width="100%" height="auto" />'; 
+    
+     $(function () {
+            $('#mobileMenu').slicknav({
+                label: ' ' 
+            });
+        });
 }
 else{
+  //  document.getElementById("deskMenu").style.visibility = 'visible';
+    document.getElementById("divmobileMenu").style.visibility = 'hidden';
+    smoothScroll.init({
+        speed: 1000, // Integer. How fast to complete the scroll in milliseconds
+    easing: 'easeOutCubic', // Easing pattern to use
+    offset: 0,// Integer. How far to offset the scrolling anchor location in pixels
+        
+    });
     init();
     animate();
 }

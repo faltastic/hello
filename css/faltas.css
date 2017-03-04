@@ -44,6 +44,7 @@ src: url('fonts/Noto-Naskh-Arabic.ttf') format('TrueType');
     top: 1em;
     right: 2em;
     width: 100%;
+    max-width: 100%;
     line-height: 1.0em;
     font-size: 1em;
     font-weight: 400;
@@ -151,3 +152,38 @@ button a:hover{
     margin-bottom: 2em;
     
 }
+
+
+/* Media Queries
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+/*
+Note: The best way to structure the use of media queries is to create the queries
+near the relevant code. For example, if you wanted to change the styles for buttons
+on small devices, paste the mobile query code up in the buttons section and style it
+there.
+*/
+
+
+/* Larger than mobile */
+@media (min-width: 400px) {
+    button {
+        
+     /*   font-size: 0.2em;*/
+    }
+}
+
+/* Larger than phablet (also point when grid becomes active) */
+@media (min-width: 550px) {
+    #deskMenu button{
+        
+    }
+}
+
+/* Larger than tablet */
+@media (min-width: 750px) {}
+
+/* Larger than desktop */
+@media (min-width: 1000px) {}
+
+/* Larger than Desktop HD */
+@media (min-width: 1200px) {}
