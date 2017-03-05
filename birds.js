@@ -71,21 +71,23 @@ var velocityUniforms;
 var birdUniforms;
 if(window.innerWidth < window.innerHeight){
 
- //   document.getElementById("divMobilemenu").style.visibility = 'hidden';
-//document.getElementById("deskMenu").style.visibility = 'hidden';
     document.getElementById("myMenuDiv").innerHTML = '<ul id="mobileMenu"><li><a data-scroll href="#threeCanvas">Home</a></li><li><a data-scroll href="#about">About</a></li><li><a data-scroll href="#services">Services</a></li><li><a data-scroll href="#work">Work</a></li><li><a data-scroll href="#contact">Contact</a></li></ul>'; 
+    
     document.getElementById("myMenuDiv").style.visibility = 'hidden';
-    document.getElementById("threeCanvas").innerHTML =' <img src="img/intro-mobile.png" width="100%" height="auto" />'; 
+    document.getElementById("downlink").style.visibility = 'hidden';
+    //document.getElementById("threeCanvas").innerHTML =' <img src="img/dyn.gif" width="100%" height="auto" />'; 
     
      $(function () {
             $('#mobileMenu').slicknav({
                 label: ' ' 
             });
         });
+    
+    initMobile(); // without birds
+    animateMobile();
 }
 else{
-  //  document.getElementById("deskMenu").style.visibility = 'visible';
-    //document.getElementById("divMobilemenu").style.visibility = 'hidden';
+  
     document.getElementById("myMenuDiv").innerHTML = ' <div id="deskMenu"><img src="img/logo.png" height="32" width="auto" />&nbsp; &nbsp; &nbsp;<button> <a data-scroll href="#contact"> Contact </a></button> &nbsp; &nbsp;<button> <a data-scroll href="#work">Work </a></button> &nbsp; &nbsp;<button> <a data-scroll href="#services">Services </a></button> &nbsp; &nbsp;<button> <a data-scroll href="#about">About </a></button> &nbsp; &nbsp; </div>'; 
     smoothScroll.init({
         speed: 1000, // Integer. How fast to complete the scroll in milliseconds
@@ -324,8 +326,9 @@ function onDocumentTouchMove(event) {
 function animate() {
     requestAnimationFrame(animate);
     render();
-    stats.update();
+   // stats.update();
 }
+
 
 function render() {
     var now = performance.now();
@@ -350,4 +353,74 @@ function render() {
     birdUniforms.texturePosition.value = gpuCompute.getCurrentRenderTarget(positionVariable).texture;
     birdUniforms.textureVelocity.value = gpuCompute.getCurrentRenderTarget(velocityVariable).texture;
     renderer.render(scene, camera);
+}
+
+function initMobile() {
+   // container = document.createElement('div');
+   // document.body.appendChild(container);
+    camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 3000);
+    camera.position.z = 350;
+    scene = new THREE.Scene();
+    scene.fog = new THREE.Fog(0x0A2E63, 100, 1000);
+    renderer = new THREE.WebGLRenderer();
+    renderer.setClearColor(scene.fog.color);
+    renderer.setPixelRatio(window.devicePixelRatio);
+    renderer.setSize(window.innerWidth-20, window.innerHeight);
+    container = document.getElementById('threeCanvas');
+    document.body.appendChild(container);
+    
+    container.appendChild(renderer.domElement);
+
+
+    
+    
+    // Center Hedron
+    var icosahedron = new THREE.IcosahedronBufferGeometry(70, 1);
+    
+    var hydraStroke = new THREE.MeshBasicMaterial({
+        color: 0xFF4400
+        , wireframe: true
+        , wireframeLinewidth: 1.5
+        //,transparent: false
+       //,morphTargets: true
+    });
+     var hydraFill = new THREE.MeshBasicMaterial({      
+         color: 0x0A2E63
+    
+    });
+    
+    hydra[0] = new THREE.Mesh(icosahedron, hydraStroke); 
+    hydra[0].position.x = 0;
+    hydra[0].position.y = 50;
+    hydra[0].position.y =10;
+    hydra[0].position.z = 100;
+    hydra[0].userData = {
+           URL: "http://google.com"
+
+    };
+    hydra[1] = new THREE.Mesh(new THREE.IcosahedronBufferGeometry(69.5, 1), hydraFill);
+     
+    hydra[1].position.x = 0;
+    hydra[1].position.y = 50;
+    hydra[1].position.y = 10;
+    hydra[1].position.z = 100;
+    
+    
+    scene.add(hydra[1]);
+    scene.add(hydra[0]);
+
+}
+function animateMobile() {
+    requestAnimationFrame(animateMobile);
+    renderMobile();
+   // stats.update();
+}
+
+function renderMobile() {
+     hydra[1].rotation.y += 0.00251;
+    hydra[1].rotation.z += 0.00251;
+    hydra[0].rotation.y += 0.00251;
+    hydra[0].rotation.z += 0.00251;
+   
+     renderer.render(scene, camera);
 }
