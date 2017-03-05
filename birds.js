@@ -70,11 +70,12 @@ var positionUniforms;
 var velocityUniforms;
 var birdUniforms;
 if(window.innerWidth < window.innerHeight){
-
+   
     document.getElementById("myMenuDiv").innerHTML = '<ul id="mobileMenu"><li><a data-scroll href="#threeCanvas">Home</a></li><li><a data-scroll href="#about">About</a></li><li><a data-scroll href="#services">Services</a></li><li><a data-scroll href="#work">Work</a></li><li><a data-scroll href="#contact">Contact</a></li></ul>'; 
     
     document.getElementById("myMenuDiv").style.visibility = 'hidden';
     document.getElementById("downlink").style.visibility = 'hidden';
+    document.getElementById("afterBirds").style.top = "65vh";
     //document.getElementById("threeCanvas").innerHTML =' <img src="img/dyn.gif" width="100%" height="auto" />'; 
     
      $(function () {
@@ -162,7 +163,6 @@ function init() {
     
     hydra[0] = new THREE.Mesh(icosahedron, hydraStroke); 
     hydra[0].position.x = 0;
-    hydra[0].position.y = 50;
     hydra[0].position.y =10;
     hydra[0].position.z = 100;
     hydra[0].userData = {
@@ -172,7 +172,6 @@ function init() {
     hydra[1] = new THREE.Mesh(new THREE.IcosahedronBufferGeometry(69.5, 1), hydraFill);
      
     hydra[1].position.x = 0;
-    hydra[1].position.y = 50;
     hydra[1].position.y = 10;
     hydra[1].position.z = 100;
     scene.add(hydra[1]);
@@ -391,8 +390,7 @@ function initMobile() {
     
     hydra[0] = new THREE.Mesh(icosahedron, hydraStroke); 
     hydra[0].position.x = 0;
-    hydra[0].position.y = 50;
-    hydra[0].position.y =10;
+    hydra[0].position.y =30;
     hydra[0].position.z = 100;
     hydra[0].userData = {
            URL: "http://google.com"
@@ -401,8 +399,7 @@ function initMobile() {
     hydra[1] = new THREE.Mesh(new THREE.IcosahedronBufferGeometry(69.5, 1), hydraFill);
      
     hydra[1].position.x = 0;
-    hydra[1].position.y = 50;
-    hydra[1].position.y = 10;
+    hydra[1].position.y = 30;
     hydra[1].position.z = 100;
     
     
