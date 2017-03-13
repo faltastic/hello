@@ -73,7 +73,7 @@ var birdUniforms;
 // Mobile
 if(navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry)/) ){
    
-    document.getElementById("myMenuDiv").innerHTML = '<ul id="mobileMenu"><li><a data-scroll href="#threeCanvas">Home</a></li><li><a data-scroll href="#about">About</a></li><li><a data-scroll href="#services">Services</a></li><li><a data-scroll href="#work">Work</a></li><li><a data-scroll href="#contact">Contact</a></li></ul>'; 
+    document.getElementById("myMenuDiv").innerHTML = '<ul id="mobileMenu"><li><a data-scroll href="#about">About</a></li><li><a data-scroll href="#services">Services</a></li><li><a data-scroll href="#work">Work</a></li><li><a data-scroll href="#contact">Contact</a></li></ul>'; 
     
     document.getElementById("myMenuDiv").style.visibility = 'hidden';
     document.getElementById("downlink").style.visibility = 'hidden';
