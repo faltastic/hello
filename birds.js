@@ -69,14 +69,15 @@ var positionVariable;
 var positionUniforms;
 var velocityUniforms;
 var birdUniforms;
-if(window.innerWidth < window.innerHeight){
+
+// Mobile
+if(navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry)/) ){
    
     document.getElementById("myMenuDiv").innerHTML = '<ul id="mobileMenu"><li><a data-scroll href="#threeCanvas">Home</a></li><li><a data-scroll href="#about">About</a></li><li><a data-scroll href="#services">Services</a></li><li><a data-scroll href="#work">Work</a></li><li><a data-scroll href="#contact">Contact</a></li></ul>'; 
     
     document.getElementById("myMenuDiv").style.visibility = 'hidden';
     document.getElementById("downlink").style.visibility = 'hidden';
     document.getElementById("afterBirds").style.top = "65vh";
-    //document.getElementById("threeCanvas").innerHTML =' <img src="img/dyn.gif" width="100%" height="auto" />'; 
     
      $(function () {
             $('#mobileMenu').slicknav({
@@ -87,9 +88,11 @@ if(window.innerWidth < window.innerHeight){
     initMobile(); // without birds
     animateMobile();
 }
-else{
+
+// Desktop
+else {
   
-    document.getElementById("myMenuDiv").innerHTML = ' <div id="deskMenu"><img src="img/logo.png" height="32" width="auto" />&nbsp; &nbsp; &nbsp;<button> <a data-scroll href="#contact"> Contact </a></button> &nbsp; &nbsp;<button> <a data-scroll href="#work">Work </a></button> &nbsp; &nbsp;<button> <a data-scroll href="#services">Services </a></button> &nbsp; &nbsp;<button> <a data-scroll href="#about">About </a></button> &nbsp; &nbsp; </div>'; 
+    document.getElementById("myMenuDiv").innerHTML = ' <div id="deskMenu"><a onclick="showMenuItems()"> <img src="img/menu-32.png" height="32" width="auto"/> </a> <div id="deskMenuItems" > &nbsp; &nbsp; &nbsp; <button><a data-scroll href="#about">About </a></button>&nbsp; &nbsp;&nbsp;<button>  <a data-scroll href="#services">Services </a></button> &nbsp;&nbsp; &nbsp;<button> <a data-scroll href="#work">Work </a></button> &nbsp; &nbsp;&nbsp;<button> <a data-scroll href="#contact"> Contact </a></button> &nbsp; &nbsp; </div></div>'; 
     smoothScroll.init({
         speed: 1000, // Integer. How fast to complete the scroll in milliseconds
     easing: 'easeOutCubic', // Easing pattern to use
@@ -99,9 +102,23 @@ else{
     init();
     animate();
 }
+
+var visibleMenu = false;
+
+function showMenuItems(){
+    if(!visibleMenu){
+       document.getElementById("deskMenuItems").style.visibility = 'visible';
+        document.getElementById("deskMenuItems").style.opacity = 1.0;
+    }else{
+        document.getElementById("deskMenuItems").style.visibility = 'hidden';
+        document.getElementById("deskMenuItems").style.opacity = 0;
+    }
+        visibleMenu =!visibleMenu;
+}
+
+// THREE //////////////////////////////////////////////
+
 function init() {
-   // container = document.createElement('div');
-   // document.body.appendChild(container);
     camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 3000);
     camera.position.z = 350;
     scene = new THREE.Scene();
@@ -116,7 +133,7 @@ function init() {
     container.appendChild(renderer.domElement);
     initComputeRenderer();
     stats = new Stats();
-    //container.appendChild(stats.dom);
+    
     document.addEventListener('mousemove', onDocumentMouseMove, false);
     document.addEventListener('touchstart', onDocumentTouchStart, false);
     document.addEventListener('touchmove', onDocumentTouchMove, false);
@@ -163,19 +180,16 @@ function init() {
     
     hydra[0] = new THREE.Mesh(icosahedron, hydraStroke); 
     hydra[0].position.x = 0;
-    hydra[0].position.y =10;
+    hydra[0].position.y =15;
     hydra[0].position.z = 100;
-    hydra[0].userData = {
-           URL: "http://google.com"
-
-    };
-    hydra[1] = new THREE.Mesh(new THREE.IcosahedronBufferGeometry(69.5, 1), hydraFill);
-     
+    //hydra[0].userData = {URL: "http://google.com"};
+    
+    hydra[1] = new THREE.Mesh(new THREE.IcosahedronBufferGeometry(69.5, 1), hydraFill); 
     hydra[1].position.x = 0;
-    hydra[1].position.y = 10;
+    hydra[1].position.y = 15;
     hydra[1].position.z = 100;
+    
     scene.add(hydra[1]);
-
     scene.add(hydra[0]);
 
 }
@@ -325,7 +339,7 @@ function onDocumentTouchMove(event) {
 function animate() {
     requestAnimationFrame(animate);
     render();
-   // stats.update();
+   
 }
 
 
@@ -355,8 +369,6 @@ function render() {
 }
 
 function initMobile() {
-   // container = document.createElement('div');
-   // document.body.appendChild(container);
     camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 3000);
     camera.position.z = 350;
     scene = new THREE.Scene();
@@ -370,9 +382,6 @@ function initMobile() {
     
     container.appendChild(renderer.domElement);
 
-
-    
-    
     // Center Hedron
     var icosahedron = new THREE.IcosahedronBufferGeometry(70, 1);
     
@@ -392,10 +401,7 @@ function initMobile() {
     hydra[0].position.x = 0;
     hydra[0].position.y =30;
     hydra[0].position.z = 100;
-    hydra[0].userData = {
-           URL: "http://google.com"
-
-    };
+    //hydra[0].userData = {URL: "http://google.com"};
     hydra[1] = new THREE.Mesh(new THREE.IcosahedronBufferGeometry(69.5, 1), hydraFill);
      
     hydra[1].position.x = 0;
@@ -410,7 +416,7 @@ function initMobile() {
 function animateMobile() {
     requestAnimationFrame(animateMobile);
     renderMobile();
-   // stats.update();
+ 
 }
 
 function renderMobile() {

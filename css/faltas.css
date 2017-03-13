@@ -1,18 +1,24 @@
+
+@import url('https://fonts.googleapis.com/css?family=Rubik:400,500|Roboto');
+
+
+
 body{
     background: #0A2E63;
+    font-family: 'Roboto', sans-serif;
+/*   font-family: 'Rubik', sans-serif;*/
+}
+
+h2,h3,h5{
     font-family: 'Rubik', sans-serif;
 }
 
-@font-face
-{
+/*
+@font-face{
 font-family:'NotoNaskh';
 src: url('fonts/Noto-Naskh-Arabic.ttf') format('TrueType');
 }
-
-/*
-@import url('https://fonts.googleapis.com/css?family=Rubik:300,400,500,700,900');
 */
-
 
 #threeCanvas{
     position: absolute;
@@ -39,12 +45,15 @@ src: url('fonts/Noto-Naskh-Arabic.ttf') format('TrueType');
 }
 
 #deskMenu{
-    direction: rtl;
+/*    direction: rtl;*/
     position: absolute;
-    top: 1em;
-    right: 2em;
-    width: 100%;
-    max-width: 100%;
+    top: 1.5em;
+    left: 3.5em;
+    height: 32px;
+/*
+    width: 80%;
+    max-width: 80%;
+*/
     line-height: 1.0em;
     font-size: 1em;
     font-weight: 400;
@@ -55,9 +64,20 @@ src: url('fonts/Noto-Naskh-Arabic.ttf') format('TrueType');
     
 }
 
+#deskMenu img{
+    vertical-align:top;
+}
+
+#deskMenuItems{
+    display: inline;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 1.0s ease;
+}
+
 #afterBirds{
     position: absolute;
-    top: 75vh;
+    top: 80vh;
     left: 0;
     width: 100%;
     line-height: 1.0em;
@@ -68,23 +88,31 @@ src: url('fonts/Noto-Naskh-Arabic.ttf') format('TrueType');
 }
 #maintitle{
     line-height: 1.25em;
-    font-size: 2em;
-    /*color: #fff;*/
+    font-size: 1.5em;
+    font-family: 'Rubik', sans-serif;
     font-weight: 500;
     text-align: center;
-    height: 12vh;
+    height: 10vh;
+    text-transform: uppercase;
+}
+#maintitle h5{
+    font-size: 0.8em;
+    font-weight: 400;
+    
+    text-transform: none;
+    
 }
 
 #subtitle{
+
     line-height: 1.0em;
     font-size: 1.2em;
     font-weight: 400;
-    padding-top: 0.5em;
-    padding-bottom: 0.5em;
+    padding-top: 1.0em;
     padding-left: 10%;
     padding-right: 10%;
     text-align: center;
-    height: 13vh;
+    height: 8vh;
 }
 
 
@@ -107,6 +135,26 @@ src: url('fonts/Noto-Naskh-Arabic.ttf') format('TrueType');
     padding-top: 3em;
 }
 
+#services h5{
+    font-family: 'Rubik', sans-serif;
+    font-weight: 400;
+    font-size: 1.2em;
+   padding-bottom: 1.5em;
+    padding-top: 1.5em;
+}
+
+#services p{
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    line-height: 1.5em;
+}
+
+#services ul{
+   padding-left: 1.5em;
+    
+}
+
+
 #aboutLinks a{
     text-decoration: none;
     color: #0A2E63;
@@ -128,6 +176,14 @@ button a:hover{
     color: #0A2E63; /*ff4400;*/
 }
 
+#work p{
+    margin-left: 1em;
+    text-align: left;
+}
+
+#about{
+    min-height: 100vh;
+}
 #talk {
     height: 2em;
     width: 8em;
@@ -151,6 +207,11 @@ button a:hover{
     text-align: center;
     margin-bottom: 2em;
     
+}
+
+#contact a{
+    color: #e3e3e3;
+    text-decoration: underline;
 }
 
 
