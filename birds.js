@@ -1,6 +1,6 @@
 if (!Detector.webgl) Detector.addGetWebGLMessage();
-var hash = document.location.hash.substr(1);
-if (hash) hash = parseInt(hash, 0);
+// var hash = document.location.hash.substr(1);
+// if (hash) hash = parseInt(hash, 0);
 /* TEXTURE WIDTH FOR SIMULATION */
 var WIDTH = 32; //32;//hash || 32;
 // 16 =256, 32 = 1024 , 64 = 409
@@ -51,7 +51,9 @@ THREE.BirdGeometry = function () {
     }
     this.scale(0.2, 0.2, 0.2);
 };
+
 THREE.BirdGeometry.prototype = Object.create(THREE.BufferGeometry.prototype);
+
 var container, stats;
 var camera, scene, renderer, geometry, i, h, color;
 var hydra = [];
@@ -335,7 +337,7 @@ function onDocumentTouchMove(event) {
         mouseY = event.touches[0].pageY - windowHalfY;
     }
 }
-//
+
 function animate() {
     requestAnimationFrame(animate);
     render();
@@ -367,6 +369,8 @@ function render() {
     birdUniforms.textureVelocity.value = gpuCompute.getCurrentRenderTarget(velocityVariable).texture;
     renderer.render(scene, camera);
 }
+
+// Mobile
 
 function initMobile() {
     camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 3000);
@@ -413,6 +417,7 @@ function initMobile() {
     scene.add(hydra[0]);
 
 }
+
 function animateMobile() {
     requestAnimationFrame(animateMobile);
     renderMobile();
