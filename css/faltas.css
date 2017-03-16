@@ -2,6 +2,19 @@
 @import url('https://fonts.googleapis.com/css?family=Rubik:400,500|Roboto');
 
 
+/*
+a{
+    text-decoration: none;
+    color: #E3E3E3;
+
+}
+
+a:hover{
+    text-decoration: none;
+    color: #0A2E63;
+    ff4400;
+}
+*/
 
 body{
     background: #0A2E63;
@@ -144,13 +157,15 @@ src: url('fonts/Noto-Naskh-Arabic.ttf') format('TrueType');
 }
 
 #services p{
-    padding-left: 0.5em;
-    padding-right: 0.5em;
+    padding-left: 0.75em;
+    padding-right: 0.75em;
     line-height: 1.5em;
+    font-size: 0.9em;
 }
 
 #services ul{
    padding-left: 1.5em;
+    font-size: 0.9em;
     
 }
 
@@ -166,15 +181,20 @@ src: url('fonts/Noto-Naskh-Arabic.ttf') format('TrueType');
     color: #ff4400;
 }
 
-button a{
+#deskMenuItems button a{
     text-decoration: none;
     color: #E3E3E3;
+
 }
 
-button a:hover{
+#deskMenuItems button a:hover{
     text-decoration: none;
-    color: #0A2E63; /*ff4400;*/
+    color: #ff4400;
+    //*background-color: #E3E3E3;*/
+
 }
+
+
 
 #work p{
     margin-left: 1em;
