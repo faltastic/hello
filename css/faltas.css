@@ -190,7 +190,6 @@ src: url('fonts/Noto-Naskh-Arabic.ttf') format('TrueType');
 #deskMenuItems button a:hover{
     text-decoration: none;
     color: #ff4400;
-    //*background-color: #E3E3E3;*/
 
 }
 
