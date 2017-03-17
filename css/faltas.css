@@ -163,6 +163,13 @@ src: url('fonts/Noto-Naskh-Arabic.ttf') format('TrueType');
     font-size: 0.9em;
 }
 
+#services a{
+     color: #ff4400;
+    text-decoration: none;
+}
+#services a:hover{
+    text-decoration: underline;
+}
 #services ul{
    padding-left: 1.5em;
     font-size: 0.9em;
