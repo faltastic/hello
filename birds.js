@@ -2,7 +2,7 @@ if (!Detector.webgl) Detector.addGetWebGLMessage();
 // var hash = document.location.hash.substr(1);
 // if (hash) hash = parseInt(hash, 0);
 /* TEXTURE WIDTH FOR SIMULATION */
-var WIDTH = 32; //32;//hash || 32;
+var WIDTH = 32; //32; //32;//hash || 32;
 // 16 =256, 32 = 1024 , 64 = 409
 
 
@@ -94,7 +94,7 @@ if(navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry)/) ){
 // Desktop
 else {
   
-    document.getElementById("myMenuDiv").innerHTML = ' <div id="deskMenu"><a onclick="showMenuItems()"> <img src="img/menu-32.png" height="32" width="auto"/> </a> <div id="deskMenuItems" > &nbsp; &nbsp; &nbsp; <button><a data-scroll href="#about">About </a></button>&nbsp; &nbsp;&nbsp;<button>  <a data-scroll href="#services">Services </a></button> &nbsp;&nbsp; &nbsp;<button> <a data-scroll href="#work">Work </a></button> &nbsp; &nbsp;&nbsp;<button> <a data-scroll href="#contact"> Contact </a></button> &nbsp; &nbsp; </div></div>'; 
+     document.getElementById("myMenuDiv").innerHTML = ' <div id="deskMenu"><a onclick="showMenuItems()"> <img src="img/menu-32.png" height="32" width="auto"/> </a> <div id="deskMenuItems" > <a data-scroll href="#about">About </a>  <a data-scroll href="#services">Services </a> <a data-scroll href="#work">Work </a> <a data-scroll href="#contact"> Contact </a>  </div></div>';
     smoothScroll.init({
         speed: 1000, // Integer. How fast to complete the scroll in milliseconds
     easing: 'easeOutCubic', // Easing pattern to use

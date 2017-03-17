@@ -60,25 +60,21 @@ src: url('fonts/Noto-Naskh-Arabic.ttf') format('TrueType');
 #deskMenu{
 /*    direction: rtl;*/
     position: absolute;
-    top: 1.5em;
-    left: 3.5em;
+    top: 0.75em;
+    left: 1.75em;
     height: 32px;
-/*
+
     width: 80%;
-    max-width: 80%;
-*/
+
     line-height: 1.0em;
     font-size: 1em;
-    font-weight: 400;
     color: #E3E3E3;
-    text-transform: uppercase;
-    margin-left: -2em;
-/*    font-family: 'Rubik', sans-serif;*/
-    
+    margin-top: 1em;
+    font-family: 'Rubik', sans-serif;
 }
 
 #deskMenu img{
-    vertical-align:top;
+    vertical-align: middle;
 }
 
 #deskMenuItems{
@@ -86,7 +82,28 @@ src: url('fonts/Noto-Naskh-Arabic.ttf') format('TrueType');
     visibility: hidden;
     opacity: 0;
     transition: all 1.0s ease;
+    font-size: 1.33em;
+
 }
+
+
+#deskMenuItems a{
+    margin-left: 2em;
+    color: #E3E3E3;
+    transition: all 0.5s ease;
+    text-decoration: none;
+
+}
+
+#deskMenuItems a:hover{
+    color: #ff4400;
+
+    -webkit-transition:color 500ms ease-in-out;
+    -moz-transition:color 500ms ease-in-out;
+    transition: color 0.5s ease;
+
+}
+
 
 #afterBirds{
     position: absolute;
@@ -188,18 +205,6 @@ src: url('fonts/Noto-Naskh-Arabic.ttf') format('TrueType');
     color: #ff4400;
 }
 
-#deskMenuItems button a{
-    text-decoration: none;
-    color: #E3E3E3;
-
-}
-
-#deskMenuItems button a:hover{
-    text-decoration: none;
-    color: #ff4400;
-
-}
-
 
 
 #work p{
@@ -255,17 +260,12 @@ test git
 
 /* Larger than mobile */
 @media (min-width: 400px) {
-    button {
-        
-     /*   font-size: 0.2em;*/
-    }
+
 }
 
 /* Larger than phablet (also point when grid becomes active) */
 @media (min-width: 550px) {
-    #deskMenu button{
-        
-    }
+
 }
 
 /* Larger than tablet */
