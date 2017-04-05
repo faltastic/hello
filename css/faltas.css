@@ -215,18 +215,26 @@ src: url('fonts/Noto-Naskh-Arabic.ttf') format('TrueType');
 #about{
     min-height: 100vh;
 }
-#talk {
+
+#talk a:link, a:visited{
     height: 2em;
-    width: 8em;
-    font-size: 1.25em;
+    border-radius: 5px;
+/*    min-width: 8em;*/
+    font-size: 1.2em;
     padding-top: 0.5em;
     padding-bottom: 0.5em;
+
+    padding-left: 2em;
+    padding-right:2em;
+
     background: #e3e3e3;
     color: #0A2E63;
+    text-decoration: none;
+    transition: all 0.5s ease;
 }
 
-#talk:hover{
-    /*border-color: #ff4400;*/
+
+#talk a:hover{
     background: #ff4400;
     color: #e3e3e3;
 }
