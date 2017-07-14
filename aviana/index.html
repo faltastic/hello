@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Aviana Intro</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <!-- STYLE ---------------------------------->
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/skeleton.css">
+    <link rel="stylesheet" href="css/aviana-intro.css"> </head>
+<!-- BODY ---------------------------------->
+
+<body>
+    <div id="threeCanvas"> </div>
+    <div class="container">
+        <div id="aboveBirds">
+            <div class="row">
+                <div class="one-third column" id="demoLogo">
+                    <h5>  Aviana </h5> </div>
+                <div class="one-third column u-pull-right">
+
+                    <a href="#morning" onclick="renderTime(8)">morning</a>
+                    &nbsp; &nbsp; &nbsp; &nbsp;
+                    <a href="#evening" onclick="renderTime(18)">evening</a>
+                    &nbsp; &nbsp; &nbsp; &nbsp;
+                    <a href="#night" onclick="renderTime(23)">night</a>
+
+                    <!--
+                    &nbsp;&nbsp; &nbsp; &nbsp;
+                    <a href="#modal" onclick="disperseBirds()">disperse </a>
+                    -->
+                </div>
+            </div>
+            <div class="row" id="good-something">
+                <h2>
+                    <div id="good-what"> </div>
+                    Let's fly somewhere, pick a hotel
+                    <br />
+                    or rent a car. Can we help?
+                </h2> </div>
+        </div>
+    </div>
+    <!-- SCRIPTS ---------------------------------->
+    <script src="lib/three.js"></script>
+    <script src="lib/Projector.js"></script>
+    <script src="lib/CanvasRenderer.js"></script>
+
+    <script src="objBird.js"></script>
+    <script src="dobri-den.js"></script>
+    <script src="aviana-intro.js"></script>
+    <script>
+    </script>
+</body>
+
+</html>
