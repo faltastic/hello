@@ -8,41 +8,51 @@
     <!-- STYLE ---------------------------------->
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/skeleton.css">
-    <link rel="stylesheet" href="css/aviana-intro.css"> </head>
-<!-- BODY ---------------------------------->
+    <link rel="stylesheet" href="css/aviana-intro.css">
+</head>
 
 <body>
+  <!-- BIRDS ---------------------------------->
     <div id="threeCanvas"> </div>
-    <div class="container">
-        <div id="aboveBirds">
-            <div class="row">
+  <!-- BIRDS ---------------------------------->
+
+    <div class="container" id="aboveBirds">
+
+            <div class="row" id="aviani-menu">
                 <div class="one-third column" id="demoLogo">
                     <h5>  Aviana </h5> </div>
                 <div class="one-third column u-pull-right">
 
                     <a href="#morning" onclick="renderTime(8)">morning</a>
-                    &nbsp; &nbsp; &nbsp; &nbsp;
+
+                    &nbsp; &nbsp; &nbsp;
                     <a href="#evening" onclick="renderTime(18)">evening</a>
-                    &nbsp; &nbsp; &nbsp; &nbsp;
+
+                    &nbsp; &nbsp; &nbsp;
                     <a href="#night" onclick="renderTime(23)">night</a>
 
-                    <!--
-                    &nbsp;&nbsp; &nbsp; &nbsp;
+
+                    &nbsp;&nbsp; &nbsp;
                     <a href="#modal" onclick="disperseBirds()">disperse </a>
-                    -->
+
                 </div>
             </div>
+
             <div class="row" id="good-something">
                 <h2>
                     <div id="good-what"> </div>
                     Let's fly somewhere, pick a hotel
                     <br />
                     or rent a car. Can we help?
-                </h2> </div>
-        </div>
+                </h2>
+            </div>
+
+
     </div>
     <!-- SCRIPTS ---------------------------------->
-    <script src="lib/three.js"></script>
+
+<!--    <script src="lib/three.js"></script>-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/86/three.min.js"></script>
     <script src="lib/Projector.js"></script>
     <script src="lib/CanvasRenderer.js"></script>
 

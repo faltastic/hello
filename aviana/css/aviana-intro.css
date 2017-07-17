@@ -23,7 +23,7 @@ h5 {
     font-size: 3em;
     color: #00ffff;
     z-index: -1;
-    background: #525B90;
+    background: #605ecc;
     /* For browsers that do not support gradients
     background: -webkit-linear-gradient(#525B90, #E7C0E2);
     /* For Safari 5.1 to 6.0
@@ -33,7 +33,7 @@ h5 {
     /* For Firefox 3.6 to 15 */
 /*    background: linear-gradient(45deg, #525B90, #E7C0E2);*/
 
-    background: linear-gradient(60deg, #454F8A, #948DD5, #E5BAE0);
+    background: linear-gradient( #292375, #373094, #605ecc ,  #bb9cda );
     /* Standard syntax */
     background-size: 200% 200%;
     -webkit-animation: sky 20s ease infinite;
