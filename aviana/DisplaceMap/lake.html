@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Lake KaleidoScope</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+
+
+      <style>
+      /* NOTE: The styles were added inline because Prefixfree needs access to your styles and they must be inlined if they are on local disk! */
+      body {
+  height: 100vh;
+  background: black;
+}
+
+canvas {
+  top: 50%;
+  left: 50%;
+  position: relative;
+  transform: translate(-50%, -50%);
+}
+
+    </style>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+
+</head>
+
+<body>
+  <canvas></canvas>
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.0/TweenMax.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/pixi.js/3.0.8/pixi.min.js'></script>
+
+    <script src="js/index.js"></script>
+
+</body>
+</html>

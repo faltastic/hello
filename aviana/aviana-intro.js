@@ -242,6 +242,15 @@ function onWindowResize() {
     renderer.setSize(window.innerWidth, window.innerHeight);
 }
 
+
+var compassID = document.getElementById("compass-nav").style;
+var compassAngle =0;
+
+function map(n, start1, stop1, start2, stop2) {
+    return (n - start1) / (stop1 - start1) * (stop2 - start2) + start2;
+};
+
+
 function onDocumentMouseMove(event) {
     var vector = new THREE.Vector3(event.clientX - SCREEN_WIDTH_HALF, -event.clientY + SCREEN_HEIGHT_HALF, 0);
     for (var i = 0, il = boids.length; i < il; i++) {
@@ -249,7 +258,15 @@ function onDocumentMouseMove(event) {
         vector.z = boid.position.z;
         boid.repulse(vector);
     }
+
+    compassAngle = map(event.clientX,0,SCREEN_WIDTH, -45,45);
+
+    compassID.transform = "rotate("+compassAngle+"deg)";
+    compassID.webkitTransform = "rotate("+compassAngle+"deg)";
+
 }
+
+
 
 var dispersing = false;
 var centerVec = new THREE.Vector3( SCREEN_WIDTH_HALF*2, SCREEN_HEIGHT_HALF, 0);
@@ -294,4 +311,6 @@ function render() {
     }
     renderer.render(scene, camera);
 }
+
+
 

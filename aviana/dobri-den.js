@@ -1,28 +1,32 @@
 var dobriDen = "Good ";;
-var birdsColor = 0x383095;
+var birdsColor = 0x161d2e;
 
 var hourNow = new Date().getHours();
 
 renderTime(hourNow);
 
+//renderTime(23);
 
 function renderTime(hourNow) {
     dobriDen = "Good ";
+    var skyBkg = document.getElementById("threeCanvas");
 
     if (hourNow > 4 && hourNow < 17) {
         dobriDen += "morning!";
-        document.getElementById("threeCanvas").style.background = "linear-gradient(#4c558e,  #8182cc, #b99bd2,#e4b8dc)";
+        skyBkg.className = " morning";
         birdsColor = 0x5f67a8;
     }
     else if (hourNow < 22) {
         dobriDen += "evening!";
-        document.getElementById("threeCanvas").style.background = "linear-gradient( #292375, #373094, #605ecc ,  #bb9cda )";
+        skyBkg.className = "evening";
         birdsColor = 0x383095;
     }
     else {
         dobriDen += "night!";
-        document.getElementById("threeCanvas").style.background = "linear-gradient(#121421, #233248, #4c5166, #a3735c)";
+        skyBkg.className = "night";
         birdsColor = 0x161d2e;
+
     }
-    document.getElementById("good-what").innerHTML = dobriDen;
+  document.getElementById("good-what").innerHTML = dobriDen;
+  //init();
 }
