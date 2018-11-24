@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Youssef Faltas</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+<!-- STYLE ---------------------------------->
+<!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rubik:300,400,500,700,900" >-->
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/skeleton.css">
+    <link rel="stylesheet" href="css/slicknav.css">
+    <link rel="stylesheet" href="css/faltas.min.css">
+
+    
+    <script src="js/jquery.js"></script>
+    <script src="js/jquery.slicknav.min.js"></script>
+  
+
+</head>
+    
+<!-- BODY ---------------------------------->
+<body>
+    <!--
+    <div id="info">
+			<a href="http://threejs.org" target="_blank">three.js</a> - <span id="birds"></span> webgl gpgpu birds<br/>
+			Select <span id="options"></span> birds<br/>
+			Move mouse to disturb birds.
+
+		</div>
+-->
+    
+<div id="threeCanvas">   </div>
+
+<div class="container">
+<!-- MENU ---------------------------------->
+    
+<div id="myMenuDiv">
+
+</div>
+
+<!-- PAGE ---------------------------------->
+<div id="afterBirds">
+    
+    <div class="row" id="maintitle"> 
+        Youssef Faltas
+        <h5>creative web developer</h5>
+        <br /> 
+    </div>
+    <div class="row" id="subtitle"> 
+<!--
+        I design and develop simple clean responsive websites with a twist of creative coding
+        <br />
+-->
+
+        <a data-scroll href="#about"> <img id="downlink" src="img/more.png" height="22" width="auto" /></a>
+        <br /> 
+
+
+    </div>
+    
+    <div class="row brightsection" id="about">
+        <div class="two-thirds column">
+            <h2> hi, </h2>
+            <p>I'm a creative front‑end developer with 4+ years of professional experience, based in Prague. </p>
+            <p>I build rich web environments using the most sophisticated technologies available today for interactive and responsive websites.</p>
+            <p>I have worked on company websites, portfolios of visual artists, and data visualization projects. Each project is a process of building custom solutions to fit the goal at hand.</p>
+        </div>
+        <div class="one-third column" id="aboutLinks">
+            <center>
+                <br />
+                <br />
+                <a href="Youssef-Faltas-CV.pdf"> <img src="img/file-blue.png" width="27.5%" height="auto" onmouseover="this.src='img/file-orange.png'" onmouseout="this.src='img/file-blue.png'" />
+                    <br /> Resume </a>
+                <br />
+                <br />
+                <br />
+                <a href="https://github.com/faltastic"> <img src="img/github-blue.png" width="30%" height="auto" onmouseover="this.src='img/github-orange.png'" onmouseout="this.src='img/github-blue.png'" />
+                    <br /> Github </a>
+            </center>
+        </div>
+    </div>
+
+
+<!-- SERVICES ------------------------------------------->        
+    <div id="services" class="row darksection" >
+         <center>
+            <h3>What I do</h3></center>
+        <br />
+        <br />
+
+        <div class="one-half column">
+            <center>
+                    <div class="one-half column">
+                        <img src="img/design.png" width="40%" height="auto"/>
+                        <h5> Web Design </h5>
+                    </div>
+                    <div class="one-half column"> 
+                        <img src="img/interact.png" width="40%" height="auto"/>
+                        <h5> Interaction Design</h5>
+                   </div>
+            </center>
+
+
+            <br /><br /><br /><br /><br /><br /><br /><br /><br />
+
+            <p> When designing for the web, the two key elements I focus on are simplicity and the creation of an aesthetic that reflects the spirit of the project at hand.
+            </p>
+            <p> My user experience building practice is influenced by my work as a <a  href="http://faltastico.tumblr.com/tagged/projects" target="_blank">new media artist</a> and experimenting with various interaction possibilities. In each project, I hope to create an intuitive and original navigataion structure that all users would enjoy exploring. </p>
+            <p>Tools I use</p> 
+            <ul> 
+                <li> Pen and paper</li>
+                <li> Inkscape</li>
+                <li> Gimp</li>
+            </ul>
+            <br /><br />
+
+        </div>
+        <div class="one-half column">
+            <center>
+                    <div class="one-half column">
+                        <img src="img/dev.png" width="40%" height="auto"/>
+                        <h5> Web Development </h5>
+                    </div>
+                    <div class="one-half column"> 
+                        <img src="img/dataviz.png" width="40%" height="auto"/>
+                        <h5> Data Visualization</h5>
+                   </div>
+            </center>
+
+
+            <br /><br /><br /><br /><br /><br /><br /><br /><br />
+           <p> Developing a rich web experience for all browsers and to function on all devices can be a hassle, but I learned that using tools that fit each project helps simplify and streamline the development process. 
+            </p>
+            <p> My process relies on experimenting often with cutting edge web technology and is closely tied to design. What I aim to achieve is a creative mix between design and development in order to enhance the user expeirence.</p>
+            <p>Tools I use</p> 
+            <ul> 
+                <li> HTML5</li>
+                <li> CSS3</li>
+                <li> Javascript 
+                    <ul>
+                        <li> jQuery</li>
+                        <li> p5. &nbsp; D3. &nbsp; Three</li>
+                        <li> Immutable</li>
+                        <li> Typescript</li>
+                        <li> Vue 2</li>
+                    </ul>
+                </li>
+                <li>Git</li>
+            </ul>
+
+
+        </div>
+
+    </div>
+
+
+<!-- WORK ------------------------------------------->        
+    <div id="work" class="row brightsection" >
+        <br />
+        <center>
+            <h3>Recent Projects</h3></center>
+        <br />
+        <br />
+        <div class="row">
+            <div class="one-half column">
+                <center><a href="http://qamosalthawra.com/index.html" target="_blank"> <img  src="img/sites/qamoos.png" width="75%" height="auto"></a>
+                    <h5> A Dictionary of the Revolution</h5>
+                    </center>
+                    <p> Visualization of the inter-connections between new words that entered political dialogue following the January 2011 revolution in Egypt.</p>
+
+            </div>
+            <div class="one-half column">
+                <center><a href="http://www.syriaonthemove.com/" target="_blank"> <img src="img/sites/onthemove.png" width="75%" height="auto"></a>
+                    <br />
+                    <h5> Syria on the Move</h5> </center>
+                <p> A photomapping web app which gives a voice to Syrians in exile by enabling them to communicate with others through photography.</p>
+            </div>  
+        </div>
+         <br />
+        <br />
+        <div class="row">
+            <div class="one-half column">
+                <center> <a href="http://agnesmichalczyk.com/" target="_blank"><img  src="img/sites/agnes.png" width="75%" height="auto"></a>
+                    <br />
+                    <h5> Agnes Michalczyk</h5> </center>
+                <p> Portfolio of the artworks of Agnes Michalczyk</p>
+            </div>
+            <div class="one-half column">
+                <center><a href="http://elteneen.github.io/web/" target="_blank"><img src="img/sites/teneen.png" width="75%" height="auto"></a>
+                    <br />
+                    <h5> El Teneen</h5> </center>
+                <p> Portfolio of street artist El Teneen</p>
+            </div>
+        </div>
+        <br />
+        <br />
+        <div class="row">
+            <div class="one-half column">
+                <center> <a href="http://choirproject.net/" target="_blank"> <img  src="img/sites/choir.png" width="75%" height="auto"></a>
+                    <br />
+                    <h5> The Choir Project</h5> </center>
+                <p>The Choir Project invites people from all walks of life to put their hopes and concerns, their feelings and thoughts, their jokes and woes into song.</p>
+            </div>
+            <div class="one-half column">
+                <center> <a href="http://thrust-eg.com/" target="_blank"> <img src="img/sites/thrust.png" width="75%" height="auto"></a>
+                    <br />
+                    <h5> Thrust EG</h5> </center>
+                <p> Website of Thrust EG, a company working as a Human Development and Learning catalyst. </p>
+            </div>
+        </div>
+
+        <br />
+        <br />
+    </div>
+
+<!-- CONTACT ------------------------------------------->          
+    <div id="contact" class="row darksection" >
+        <center>
+
+            <h3> Want to discuss your new project?</h3>
+            <br />
+            <div id="talk"><a  href="mailto:youssef.faltas@gmail.com">Let's Talk</a>
+                </div>
+            <br />
+            <br />
+            <br /><br /><br />
+            <a href="http://faltastico.tumblr.com/"><img src="img/tumblr-grey.png" onmouseover="this.src='img/tumblr-orange.png'" onmouseout="this.src='img/tumblr-grey.png'"/></a>&nbsp; &nbsp;&nbsp;
+            <a href="http://codepen.io/faltastic/"><img src="img/codepen-grey.png" onmouseover="this.src='img/codepen-orange.png'" onmouseout="this.src='img/codepen-grey.png'" /></a>&nbsp; &nbsp;&nbsp;
+            <a href="https://twitter.com/Faltastico"><img src="img/twitter-grey.png" onmouseover="this.src='img/twitter-orange.png'" onmouseout="this.src='img/twitter-grey.png'"/></a>
+
+
+            <br /><br /> <br />
+
+             <a data-scroll href="#threeCanvas"> <img src="img/logo.png" height="64" width="auto" style="vertical-align:middle" /></a> &nbsp;
+            <br />  <br />
+            <small>
+            &copy; Youssef Faltas, 2017.
+            <br />
+            This website was built on <a href="http://getskeleton.com/" target="_blank">Skeleton</a> and the 3D animation runs on <a href="https://github.com/mrdoob/three.js/" target="_blank">threeJS</a>.
+                </small>
+
+        </center>
+    </div>
+</div>
+</div>
+    
+<!-- SCRIPTS ---------------------------------->
+
+<script src="js/smooth-scroll.min.js"></script>
+
+<script> 
+    
+</script>
+
+    
+<script src="js/three.min.js"></script>
+<script src="js/Detector.js"></script>
+<script src="js/libs/stats.min.js"></script>
+<script src="js/libs/dat.gui.min.js"></script>
+<script src="js/GPUComputationRenderer.js"></script>
+<script src="js/objBird.js"></script>
+    
+<!-- shader for bird's position -->
+<script id="fragmentShaderPosition" type="x-shader/x-fragment">
+
+    uniform float time;
+    uniform float delta;
+
+    void main()	{
+
+        vec2 uv = gl_FragCoord.xy / resolution.xy;
+        vec4 tmpPos = texture2D( texturePosition, uv );
+        vec3 position = tmpPos.xyz;
+        vec3 velocity = texture2D( textureVelocity, uv ).xyz;
+
+        float phase = tmpPos.w;
+
+        phase = mod( ( phase + delta +
+            length( velocity.xz ) * delta * 3. +
+            max( velocity.y, 0.0 ) * delta * 6. ), 62.83 );
+
+        gl_FragColor = vec4( position + velocity * delta * 15. , phase );
+
+    }
+
+</script>
+
+<!-- shader for bird's velocity -->
+<script id="fragmentShaderVelocity" type="x-shader/x-fragment">
+
+    uniform float time;
+    uniform float testing;
+    uniform float delta; // about 0.016
+    uniform float seperationDistance; // 20
+    uniform float alignmentDistance; // 40
+    uniform float cohesionDistance; //
+    uniform float freedomFactor;
+    uniform vec3 predator;
+
+    const float width = resolution.x;
+    const float height = resolution.y;
+
+    const float PI = 3.141592653589793;
+    const float PI_2 = PI * 2.0;
+    // const float VISION = PI * 0.55;
+
+    float zoneRadius = 40.0;
+    float zoneRadiusSquared = 1600.0;
+
+    float separationThresh = 0.45;
+    float alignmentThresh = 0.65;
+
+    const float UPPER_BOUNDS = BOUNDS;
+    const float LOWER_BOUNDS = -UPPER_BOUNDS;
+
+    const float SPEED_LIMIT = 9.0;
+
+    float rand(vec2 co){
+        return fract(sin(dot(co.xy ,vec2(12.9898,78.233))) * 43758.5453);
+    }
+
+    void main() {
+
+        zoneRadius = seperationDistance + alignmentDistance + cohesionDistance;
+        separationThresh = seperationDistance / zoneRadius;
+        alignmentThresh = ( seperationDistance + alignmentDistance ) / zoneRadius;
+        zoneRadiusSquared = zoneRadius * zoneRadius;
+
+
+        vec2 uv = gl_FragCoord.xy / resolution.xy;
+        vec3 birdPosition, birdVelocity;
+
+        vec3 selfPosition = texture2D( texturePosition, uv ).xyz;
+        vec3 selfVelocity = texture2D( textureVelocity, uv ).xyz;
+
+        float dist;
+        vec3 dir; // direction
+        float distSquared;
+
+        float seperationSquared = seperationDistance * seperationDistance;
+        float cohesionSquared = cohesionDistance * cohesionDistance;
+
+        float f;
+        float percent;
+
+        vec3 velocity = selfVelocity;
+
+        float limit = SPEED_LIMIT;
+
+        dir = predator * UPPER_BOUNDS - selfPosition;
+        dir.z = 0.;
+        // dir.z *= 0.6;
+        dist = length( dir );
+        distSquared = dist * dist;
+
+        float preyRadius = 150.0;
+        float preyRadiusSq = preyRadius * preyRadius;
+
+
+        // move birds away from predator
+        if (dist < preyRadius) {
+
+            f = ( distSquared / preyRadiusSq - 1.0 ) * delta * 100.;
+            velocity += normalize( dir ) * f;
+            limit += 5.0;
+        }
+
+
+        // if (testing == 0.0) {}
+        // if ( rand( uv + time ) < freedomFactor ) {}
+
+
+        // Attract flocks to the center
+        vec3 central = vec3( 0., 0., 0. );
+        dir = selfPosition - central;
+        dist = length( dir );
+
+        dir.y *= 2.5;
+        velocity -= normalize( dir ) * delta * 5.;
+
+        for (float y=0.0;y<height;y++) {
+            for (float x=0.0;x<width;x++) {
+
+                vec2 ref = vec2( x + 0.5, y + 0.5 ) / resolution.xy;
+                birdPosition = texture2D( texturePosition, ref ).xyz;
+
+                dir = birdPosition - selfPosition;
+                dist = length(dir);
+
+                if (dist < 0.0001) continue;
+
+                distSquared = dist * dist;
+
+                if (distSquared > zoneRadiusSquared ) continue;
+
+                percent = distSquared / zoneRadiusSquared;
+
+                if ( percent < separationThresh ) { // low
+
+                    // Separation - Move apart for comfort
+                    f = (separationThresh / percent - 1.0) * delta;
+                    velocity -= normalize(dir) * f;
+
+                } else if ( percent < alignmentThresh ) { // high
+
+                    // Alignment - fly the same direction
+                    float threshDelta = alignmentThresh - separationThresh;
+                    float adjustedPercent = ( percent - separationThresh ) / threshDelta;
+
+                    birdVelocity = texture2D( textureVelocity, ref ).xyz;
+
+                    f = ( 0.5 - cos( adjustedPercent * PI_2 ) * 0.5 + 0.5 ) * delta;
+                    velocity += normalize(birdVelocity) * f;
+
+                } else {
+
+                    // Attraction / Cohesion - move closer
+                    float threshDelta = 1.0 - alignmentThresh;
+                    float adjustedPercent = ( percent - alignmentThresh ) / threshDelta;
+
+                    f = ( 0.5 - ( cos( adjustedPercent * PI_2 ) * -0.5 + 0.5 ) ) * delta;
+
+                    velocity += normalize(dir) * f;
+
+                }
+
+            }
+
+        }
+
+
+
+        // this make tends to fly around than down or up
+        // if (velocity.y > 0.) velocity.y *= (1. - 0.2 * delta);
+
+        // Speed Limits
+        if ( length( velocity ) > limit ) {
+            velocity = normalize( velocity ) * limit;
+        }
+
+        gl_FragColor = vec4( velocity, 1.0 );
+
+    }
+
+</script>
+
+<script type="x-shader/x-vertex" id="birdVS">
+
+    attribute vec2 reference;
+    attribute float birdVertex;
+
+    attribute vec3 birdColor;
+
+    uniform sampler2D texturePosition;
+    uniform sampler2D textureVelocity;
+
+    varying vec4 vColor;
+    varying float z;
+
+    uniform float time;
+
+    void main() {
+
+        vec4 tmpPos = texture2D( texturePosition, reference );
+        vec3 pos = tmpPos.xyz;
+        vec3 velocity = normalize(texture2D( textureVelocity, reference ).xyz);
+
+        vec3 newPosition = position;
+
+        if ( birdVertex == 4.0 || birdVertex == 7.0 ) {
+            // flap wings
+            newPosition.y = sin( tmpPos.w ) * 5.;
+        }
+
+        newPosition = mat3( modelMatrix ) * newPosition;
+
+
+        velocity.z *= -1.;
+        float xz = length( velocity.xz );
+        float xyz = 1.;
+        float x = sqrt( 1. - velocity.y * velocity.y );
+
+        float cosry = velocity.x / xz;
+        float sinry = velocity.z / xz;
+
+        float cosrz = x / xyz;
+        float sinrz = velocity.y / xyz;
+
+        mat3 maty =  mat3(
+            cosry, 0, -sinry,
+            0    , 1, 0     ,
+            sinry, 0, cosry
+
+        );
+
+        mat3 matz =  mat3(
+            cosrz , sinrz, 0,
+            -sinrz, cosrz, 0,
+            0     , 0    , 1
+        );
+
+        newPosition =  maty * matz * newPosition;
+        newPosition += pos;
+
+        z = newPosition.z;
+
+        vColor = vec4( birdColor, 1.0 );
+        gl_Position = projectionMatrix *  viewMatrix  * vec4( newPosition, 1.0 );
+    }
+
+</script>
+
+<!-- bird geometry shader -->
+<script type="x-shader/x-fragment" id="birdFS">
+
+    varying vec4 vColor;
+    varying float z;
+
+    uniform vec3 color;
+
+    void main() {
+        // Fake colors for now
+        float z2 = 0.2 + ( 1000. - z ) / 1000. * vColor.x;
+        gl_FragColor = vec4( z2, z2, z2, 1. );
+
+    }
+
+</script>
+
+
+<script src="birds.min.js"></script>
+    
+</body>
+
+</html>
