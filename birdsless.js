@@ -4,11 +4,11 @@ var Boid = function () {
     _acceleration,
     _width = 500,
     _height = 500,
-    _depth = 500,
+    _depth = 50,
     _goal,
-    _neighborhoodRadius = 50,
-    _maxSpeed = 3,
-    _maxSteerForce = 0.051,
+    _neighborhoodRadius = 80,
+    _maxSpeed = 2,
+    _maxSteerForce = 0.151,
     _avoidWalls = true; //false;
   this.position = new THREE.Vector3();
   this.velocity = new THREE.Vector3();
@@ -204,12 +204,12 @@ function init() {
     boid.velocity.y = Math.random() * 2 - 1;
     boid.velocity.z = Math.random() * 2 - 1;
     boid.setAvoidWalls(true);
-    boid.setWorldSize(500, 500, 400);
-    //boid.setWorldSize(100, 100, 40);
+    // boid.setWorldSize(500, 500, 250);
+    boid.setWorldSize(100, 100, 10);
     bird = birds[i] = new THREE.Mesh(
       new Bird(),
       new THREE.MeshBasicMaterial({
-        color: 0x00ffff, //00f8fc //0xffffff,
+        color: 0x00f8fc, //0xffffff,
         //, side: THREE.DoubleSide
       })
     );
@@ -225,7 +225,7 @@ function init() {
     //,morphTargets: true
   });
   var wireFill = new THREE.MeshBasicMaterial({
-    color: 0x1c264a,
+    color: 0xdc264a,
   });
   //var geometry1 = new THREE.SphereBufferGeometry(64, 16, 16);
   //geometry1 = new THREE.IcosahedronBufferGeometry(100, 1);
@@ -236,7 +236,7 @@ function init() {
   objects[0].position.x = 0;
   objects[0].position.y = 50;
   objects[0].position.y = 20;
-  objects[0].position.z = 10;
+  objects[0].position.z = 200;
   objects[0].userData = {
     URL: "http://google.com",
   };
@@ -303,8 +303,8 @@ function render() {
     bird = birds[i];
     bird.position.copy(boids[i].position);
     color = bird.material.color;
-    //color.r = color.g = color.b = ( 500 - bird.position.z ) / 100; //1000;
-    bird.material.opacity = (500 - bird.position.z) / 1000;
+    color.r = color.g = color.b = (500 - bird.position.z) / 100; //1000;
+    bird.material.opacity = 1; // (500 - bird.position.z) / 1000;
     bird.rotation.y = Math.atan2(-boid.velocity.z, boid.velocity.x);
     bird.rotation.z = Math.asin(boid.velocity.y / boid.velocity.length());
     bird.phase = (bird.phase + (Math.max(0, bird.rotation.z) + 0.1)) % 62.83;

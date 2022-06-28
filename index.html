@@ -1,218 +1,276 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <title>Youssef Faltas</title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
+    />
+    <!-- STYLE ---------------------------------->
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/skeleton.css" />
+    <link rel="stylesheet" href="css/slicknav.css" />
+    <link rel="stylesheet" href="css/faltas.min.css" />
 
-<head>
-  <title>Youssef Faltas</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-  <!-- STYLE ---------------------------------->
-  <link rel="stylesheet" href="css/normalize.css">
-  <link rel="stylesheet" href="css/skeleton.css">
-  <link rel="stylesheet" href="css/slicknav.css">
-  <link rel="stylesheet" href="css/faltas.min.css">
+    <style>
+      .slicknav_menu {
+        background: none;
+      }
 
-  <style>
-    .slicknav_menu {
-      background: none;
-    }
+      .slicknav_btn {
+        background-color: transparent;
+      }
+    </style>
 
-    .slicknav_btn {
+    <script src="js/jquery.js"></script>
+    <script src="js/jquery.slicknav.min.js"></script>
+  </head>
 
-      background-color: transparent;
-    }
-  </style>
+  <!-- BODY ---------------------------------->
 
+  <body>
+    <div id="threeCanvas"></div>
 
+    <div class="container">
+      <!-- MENU ---------------------------------->
 
+      <div id="myMenuDiv"></div>
 
-  <script src="js/jquery.js"></script>
-  <script src="js/jquery.slicknav.min.js"></script>
-
-
-</head>
-
-<!-- BODY ---------------------------------->
-
-<body>
-
-  <div id="threeCanvas"> </div>
-
-  <div class="container">
-    <!-- MENU ---------------------------------->
-
-    <div id="myMenuDiv">
-
-    </div>
-
-    <!-- PAGE ---------------------------------->
-    <div id="afterBirds">
-
-      <div class="row" id="maintitle">
-        Youssef Faltas
-        <h5>creative web developer</h5>
-        <br />
-      </div>
-      <div class="row" id="subtitle">
-        <!--
+      <!-- PAGE ---------------------------------->
+      <div id="afterBirds">
+        <div class="row" id="maintitle">
+          Youssef Faltas
+          <h5>creative web developer</h5>
+          <br />
+        </div>
+        <div class="row" id="subtitle">
+          <!--
         I design and develop simple clean responsive websites with a twist of creative coding
         <br /> -->
-        <a data-scroll href="#about"> <img id="downlink" src="img/more.png" height="22" width="auto" /></a>
-        <br />
-
-
-      </div>
-
-      <div class="row brightsection" id="about">
-        <div class="two-thirds column">
-          <h2> hi, </h2>
-          <p>I'm a creative front‑end developer with 5+ years of professional experience, based in Prague. </p>
-          <p>I build rich web environments using the most sophisticated technologies available today for interactive and responsive websites.</p>
-          <p>I have worked on company websites, portfolios of visual artists, and data visualization projects. Each project is a process of building custom solutions to fit the goal at hand.</p>
+          <a data-scroll href="#about">
+            <img id="downlink" src="img/more.png" height="22" width="auto"
+          /></a>
+          <br />
         </div>
-        <div class="one-third column" id="aboutLinks">
-          <center>
-            <br />
-            <br />
-            <a href="Youssef-Faltas-CV-2021.pdf"> <img src="img/file-blue.png" width="27.5%" height="auto" onmouseover="this.src='img/file-orange.png'" onmouseout="this.src='img/file-blue.png'" />
-                    <br /> Resume </a>
-            <br />
-            <br />
-            <br />
-            <a href="https://github.com/faltastic"> <img src="img/github-blue.png" width="30%" height="auto" onmouseover="this.src='img/github-orange.png'" onmouseout="this.src='img/github-blue.png'" />
-                    <br /> Github </a>
-          </center>
+
+        <div class="row brightsection" id="about">
+          <div class="two-thirds column">
+            <h2>hi,</h2>
+            <p>
+              I'm a creative front‑end developer with 5+ years of professional
+              experience, based in Prague.
+            </p>
+            <p>
+              I build rich web environments using the most sophisticated
+              technologies available today for interactive and responsive
+              websites.
+            </p>
+            <p>
+              I have worked on company websites, portfolios of visual artists,
+              and data visualization projects. Each project is a process of
+              building custom solutions to fit the goal at hand.
+            </p>
+          </div>
+          <div class="one-third column" id="aboutLinks">
+            <center>
+              <br />
+              <br />
+              <a href="Youssef-Faltas-CV.pdf">
+                <img
+                  src="img/file-blue.png"
+                  width="27.5%"
+                  height="auto"
+                  onmouseover="this.src='img/file-orange.png'"
+                  onmouseout="this.src='img/file-blue.png'"
+                />
+                <br />
+                Resume
+              </a>
+              <br />
+              <br />
+              <br />
+              <a href="https://github.com/faltastic">
+                <img
+                  src="img/github-blue.png"
+                  width="30%"
+                  height="auto"
+                  onmouseover="this.src='img/github-orange.png'"
+                  onmouseout="this.src='img/github-blue.png'"
+                />
+                <br />
+                Github
+              </a>
+            </center>
+          </div>
         </div>
-      </div>
 
-
-      <!-- SERVICES ------------------------------------------->
-      <div id="services" class="row darksection">
-        <center>
-          <h3>What I do</h3>
-        </center>
-        <br />
-        <br />
-
-        <div class="one-half column">
+        <!-- SERVICES ------------------------------------------->
+        <div id="services" class="row darksection">
           <center>
-            <div class="one-half column">
-              <img src="img/design.png" width="40%" height="auto" />
-              <h5> Web Design </h5>
-            </div>
-            <div class="one-half column">
-              <img src="img/interact.png" width="40%" height="auto" />
-              <h5> Interaction Design</h5>
-            </div>
+            <h3>What I do</h3>
           </center>
+          <br />
+          <br />
 
+          <div class="one-half column">
+            <center>
+              <div class="one-half column">
+                <img src="img/design.png" width="40%" height="auto" />
+                <h5>Web Design</h5>
+              </div>
+              <div class="one-half column">
+                <img src="img/interact.png" width="40%" height="auto" />
+                <h5>Interaction Design</h5>
+              </div>
+            </center>
 
-          <br /><br /><br /><br /><br /><br /><br /><br /><br />
+            <br /><br /><br /><br /><br /><br /><br /><br /><br />
 
-          <p> When designing for the web, the two key elements I focus on are simplicity and the creation of an aesthetic that reflects the spirit of the project at hand.
-          </p>
-          <p> My user experience building practice is influenced by my work as a <a href="http://faltastico.tumblr.com/tagged/projects" target="_blank">new media artist</a> and experimenting with various interaction possibilities. In each project, I hope to create an intuitive and original navigataion structure that all users would enjoy exploring. </p>
-          <p>Tools I use</p>
-          <ul>
-            <li> Pen and paper</li>
-            <li> Inkscape</li>
-            <li> Gimp</li>
-          </ul>
-          <br /><br />
+            <p>
+              When designing for the web, the two key elements I focus on are
+              simplicity and the creation of an aesthetic that reflects the
+              spirit of the project at hand.
+            </p>
+            <p>
+              My user experience building practice is influenced by my work as a
+              <a
+                href="http://faltastico.tumblr.com/tagged/projects"
+                target="_blank"
+                >new media artist</a
+              >
+              and experimenting with various interaction possibilities. In each
+              project, I hope to create an intuitive and original navigataion
+              structure that all users would enjoy exploring.
+            </p>
+            <p>Tools I use</p>
+            <ul>
+              <li>Pen and paper</li>
+              <li>Inkscape</li>
+              <li>Gimp</li>
+            </ul>
+            <br /><br />
+          </div>
+          <div class="one-half column">
+            <center>
+              <div class="one-half column">
+                <img src="img/dev.png" width="40%" height="auto" />
+                <h5>Web Development</h5>
+              </div>
+              <div class="one-half column">
+                <img src="img/dataviz.png" width="40%" height="auto" />
+                <h5>Data Visualization</h5>
+              </div>
+            </center>
 
-        </div>
-        <div class="one-half column">
-          <center>
-            <div class="one-half column">
-              <img src="img/dev.png" width="40%" height="auto" />
-              <h5> Web Development </h5>
-            </div>
-            <div class="one-half column">
-              <img src="img/dataviz.png" width="40%" height="auto" />
-              <h5> Data Visualization</h5>
-            </div>
-          </center>
-
-
-          <br /><br /><br /><br /><br /><br /><br /><br /><br />
-          <p> Developing a rich web experience for all browsers and to function on all devices can be a hassle, but I learned that using tools that fit each project helps simplify and streamline the development process.
-          </p>
-          <p> My process relies on experimenting often with cutting edge web technology and is closely tied to design. What I aim to achieve is a creative mix between design and development in order to enhance the user expeirence.</p>
-          <p>Tools I use</p>
-          <ul>
-            <li> HTML5</li>
-            <li> CSS3</li>
-            <li> Javascript
-              <ul>
-                <li> jQuery</li>
-                <li> p5. &nbsp; D3. &nbsp; Three</li>
-                <li> React</li>
-                <!--
+            <br /><br /><br /><br /><br /><br /><br /><br /><br />
+            <p>
+              Developing a rich web experience for all browsers and to function
+              on all devices can be a hassle, but I learned that using tools
+              that fit each project helps simplify and streamline the
+              development process.
+            </p>
+            <p>
+              My process relies on experimenting often with cutting edge web
+              technology and is closely tied to design. What I aim to achieve is
+              a creative mix between design and development in order to enhance
+              the user expeirence.
+            </p>
+            <p>Tools I use</p>
+            <ul>
+              <li>HTML5</li>
+              <li>CSS3</li>
+              <li>
+                Javascript
+                <ul>
+                  <li>React</li>
+                  <!-- <li> jQuery</li> -->
+                  <li>p5. &nbsp; D3. &nbsp; Three</li>
+                  <li>Storybook</li>
+                  <!--
                 <li> Vue</li>
-                -->
-              </ul>
-            </li>
-            <li>Gulp</li>
-            <li>Git</li>
-          </ul>
-
-
-        </div>
-
-      </div>
-
-
-      <!-- WORK ------------------------------------------->
-      <div id="work" class="row brightsection">
-        <br />
-        <center>
-          <h3>Recent Projects</h3>
-        </center>
-        <br />
-        <br />
-        <div class="row">
-          <div class="one-half column">
-            <center><a href="http://qamosalthawra.com/index.html" target="_blank"> <img  src="img/sites/qamoos.png" width="75%" height="auto"></a>
-              <h5> A Dictionary of the Revolution</h5>
-            </center>
-            <p> Visualization of the inter-connections between new words that entered political dialogue following the January 2011 revolution in Egypt.</p>
-
-          </div>
-          <div class="one-half column">
-            <center><a href="http://www.syriaonthemove.com/" target="_blank"> <img src="img/sites/onthemove.png" width="75%" height="auto"></a>
-              <br />
-              <h5> Syria on the Move</h5>
-            </center>
-            <p> A photomapping web app which gives a voice to Syrians in exile by enabling them to communicate with others through photography.</p>
+                --></ul>
+              </li>
+              <!-- <li>Gulp</li> -->
+              <li>Git</li>
+            </ul>
           </div>
         </div>
-        <br />
-        <br />
-        <div class="row">
-          <div class="one-half column">
-            <center> <a href="http://agnesmichalczyk.com/" target="_blank"><img  src="img/sites/agnes.png" width="75%" height="auto"></a>
-              <br />
-              <h5> Agnes Michalczyk</h5>
-            </center>
-            <p> Portfolio of the artworks of Agnes Michalczyk</p>
+
+        <!-- WORK ------------------------------------------->
+        <div id="work" class="row brightsection">
+          <br />
+          <center>
+            <h3>Freelance Projects</h3>
+          </center>
+          <br />
+          <br />
+          <div class="row">
+            <div class="one-half column">
+              <center>
+                <a href="http://qamosalthawra.com/index.html" target="_blank">
+                  <img src="img/sites/qamoos.png" width="75%" height="auto"
+                /></a>
+                <h5>A Dictionary of the Revolution</h5>
+              </center>
+              <p>
+                Visualization of the inter-connections between new words that
+                entered political dialogue following the January 2011 revolution
+                in Egypt.
+              </p>
+            </div>
+            <div class="one-half column">
+              <center>
+                <a href="http://www.syriaonthemove.com/" target="_blank">
+                  <img src="img/sites/onthemove.png" width="75%" height="auto"
+                /></a>
+                <br />
+                <h5>Syria on the Move</h5>
+              </center>
+              <p>
+                A photomapping web app which gives a voice to Syrians in exile
+                by enabling them to communicate with others through photography.
+              </p>
+            </div>
           </div>
+          <br />
+          <br />
+          <div class="row">
+            <div class="one-half column">
+              <center>
+                <a href="http://agnesmichalczyk.com/" target="_blank"
+                  ><img src="img/sites/agnes.png" width="75%" height="auto"
+                /></a>
+                <br />
+                <h5>Agnes Michalczyk</h5>
+              </center>
+              <p>Portfolio of the artworks of Agnes Michalczyk</p>
+            </div>
+            <div class="one-half column">
+              <center>
+                <a href="http://choirproject.net/" target="_blank">
+                  <img src="img/sites/choir.png" width="75%" height="auto"
+                /></a>
+                <br />
+                <h5>The Choir Project</h5>
+              </center>
+              <p>
+                The Choir Project invites people from all walks of life to put
+                their hopes and concerns, their feelings and thoughts, their
+                jokes and woes into song.
+              </p>
+            </div>
+          </div>
+          <br />
+          <br />
+          <!-- <div class="row">
           <div class="one-half column">
             <center><a href="http://elteneen.github.io/web/" target="_blank"><img src="img/sites/teneen.png" width="75%" height="auto"></a>
               <br />
               <h5> El Teneen</h5>
             </center>
             <p> Portfolio of street artist El Teneen</p>
-          </div>
-        </div>
-        <br />
-        <br />
-        <div class="row">
-          <div class="one-half column">
-            <center> <a href="http://choirproject.net/" target="_blank"> <img  src="img/sites/choir.png" width="75%" height="auto"></a>
-              <br />
-              <h5> The Choir Project</h5>
-            </center>
-            <p>The Choir Project invites people from all walks of life to put their hopes and concerns, their feelings and thoughts, their jokes and woes into song.</p>
-          </div>
+            </div>
           <div class="one-half column">
             <center> <a href="http://thrust-eg.com/" target="_blank"> <img src="img/sites/thrust.png" width="75%" height="auto"></a>
               <br />
@@ -220,111 +278,133 @@
             </center>
             <p> Website of Thrust EG, a company working as a Human Development and Learning catalyst. </p>
           </div>
+        </div> -->
+
+          <br />
+          <br />
         </div>
 
-        <br />
-        <br />
-      </div>
-
-      <!-- CONTACT ------------------------------------------->
-      <div id="contact" class="row darksection">
-        <center>
-
-          <h3> Want to discuss your new project?</h3>
-          <br />
-          <div id="talk"><a href="mailto:youssef.faltas@gmail.com">Let's Talk</a>
-          </div>
-          <br />
-          <br />
-          <br /><br /><br />
-          <a href="http://faltastico.tumblr.com/"><img src="img/tumblr-grey.png" onmouseover="this.src='img/tumblr-orange.png'" onmouseout="this.src='img/tumblr-grey.png'"/></a>&nbsp; &nbsp;&nbsp;
-          <a href="http://codepen.io/faltastic/"><img src="img/codepen-grey.png" onmouseover="this.src='img/codepen-orange.png'" onmouseout="this.src='img/codepen-grey.png'" /></a>&nbsp; &nbsp;&nbsp;
-          <a href="https://twitter.com/Faltastico"><img src="img/twitter-grey.png" onmouseover="this.src='img/twitter-orange.png'" onmouseout="this.src='img/twitter-grey.png'"/></a>
-
-
-          <br /><br /> <br />
-
-          <a data-scroll href="#threeCanvas"> <img src="img/logo.png" height="64" width="auto" style="vertical-align:middle" /></a> &nbsp;
-          <br /> <br />
-          <small>
-            &copy; Youssef Faltas, 2018.
+        <!-- CONTACT ------------------------------------------->
+        <div id="contact" class="row darksection">
+          <center>
+            <h3>Want to discuss your new project?</h3>
             <br />
-            This website was built on <a href="http://getskeleton.com/" target="_blank">Skeleton</a> and the <a href ="https://en.wikipedia.org/wiki/Firefly_algorithm" target="_blank">Firefly</a> animation runs on <a href="https://github.com/mrdoob/three.js/" target="_blank">threeJS</a>.
-                </small>
+            <div id="talk">
+              <a href="mailto:youssef.faltas@gmail.com">Let's Talk</a>
+            </div>
+            <br />
+            <br />
+            <br /><br /><br />
+            <a href="http://faltastico.tumblr.com/"
+              ><img
+                src="img/tumblr-grey.png"
+                onmouseover="this.src='img/tumblr-orange.png'"
+                onmouseout="this.src='img/tumblr-grey.png'" /></a
+            >&nbsp; &nbsp;&nbsp;
+            <a href="http://codepen.io/faltastic/"
+              ><img
+                src="img/codepen-grey.png"
+                onmouseover="this.src='img/codepen-orange.png'"
+                onmouseout="this.src='img/codepen-grey.png'" /></a
+            >&nbsp; &nbsp;&nbsp;
+            <a href="https://twitter.com/Faltastico"
+              ><img
+                src="img/twitter-grey.png"
+                onmouseover="this.src='img/twitter-orange.png'"
+                onmouseout="this.src='img/twitter-grey.png'"
+            /></a>
 
-        </center>
+            <br /><br />
+            <br />
+
+            <a data-scroll href="#threeCanvas">
+              <img
+                src="img/logo.png"
+                height="64"
+                width="auto"
+                style="vertical-align: middle"
+            /></a>
+            &nbsp; <br />
+            <br />
+            <small>
+              &copy; Youssef Faltas, 2018.
+              <br />
+              This website was built on
+              <a href="http://getskeleton.com/" target="_blank">Skeleton</a> and
+              the 3D animation is a
+              <a
+                href="https://en.wikipedia.org/wiki/Firefly_algorithm"
+                target="_blank"
+                >Firefly Algorithm</a
+              >
+              running on
+              <a href="https://github.com/mrdoob/three.js/" target="_blank"
+                >threeJS</a
+              >.
+            </small>
+          </center>
+        </div>
       </div>
     </div>
-  </div>
 
-  <!-- SCRIPTS ---------------------------------->
+    <!-- SCRIPTS ---------------------------------->
 
-  <script src="js/smooth-scroll.min.js"></script>
+    <script src="js/smooth-scroll.min.js"></script>
 
-  <script src="js/three.min.js"></script>
-  <script src="js/Detector.js"></script>
-  <script src="js/renderers/Projector.js"></script>
-  <script src="js/renderers/CanvasRenderer.js"></script>
-  <script src="js/controls/OrbitControls.js"></script>
-  <script src="fireflies/firefly.js"></script>
+    <script src="js/three.min.js"></script>
+    <script src="js/Detector.js"></script>
+    <script src="js/renderers/Projector.js"></script>
+    <script src="js/renderers/CanvasRenderer.js"></script>
+    <script src="js/controls/OrbitControls.js"></script>
+    <script src="fireflies/firefly.js"></script>
 
+    <script>
+      var mobile = false;
+      // Mobile
+      if (navigator.userAgent.match(/(iPhone|iPod|Android|BlackBerry)/)) {
+        document.getElementById("myMenuDiv").innerHTML =
+          '<ul id="mobileMenu"><li><a data-scroll href="#about">About</a></li><li><a data-scroll href="#services">Services</a></li><li><a data-scroll href="#work">Work</a></li><li><a data-scroll href="#contact">Contact</a></li></ul>';
+        document.getElementById("myMenuDiv").style.visibility = "hidden";
+        document.getElementById("downlink").style.visibility = "hidden";
+        document.getElementById("afterBirds").style.top = "65vh";
 
-  <script>
-    var mobile = false;
-    // Mobile
-    if (navigator.userAgent.match(/(iPhone|iPod|Android|BlackBerry)/)) {
-
-      document.getElementById("myMenuDiv").innerHTML = '<ul id="mobileMenu"><li><a data-scroll href="#about">About</a></li><li><a data-scroll href="#services">Services</a></li><li><a data-scroll href="#work">Work</a></li><li><a data-scroll href="#contact">Contact</a></li></ul>';
-      document.getElementById("myMenuDiv").style.visibility = 'hidden';
-      document.getElementById("downlink").style.visibility = 'hidden';
-      document.getElementById("afterBirds").style.top = "65vh";
-
-      $(function() {
-        $('#mobileMenu').slicknav({
-          label: ' '
+        $(function () {
+          $("#mobileMenu").slicknav({
+            label: " ",
+          });
         });
-      });
 
-      mobile = true;
+        mobile = true;
 
-      N = 2 ** 4,
-        beta = 100,
-        alpha = 0.004,
-        myScale = 5;
-
-    }
-
-    // Desktop
-    else {
-
-      document.getElementById("myMenuDiv").innerHTML = ' <div id="deskMenu"><a onclick="showMenuItems()"> <img src="img/menu-32.png" height="32" width="auto"/> </a> <div id="deskMenuItems" > <a data-scroll href="#about">About </a>  <a data-scroll href="#services">Services </a> <a data-scroll href="#work">Work </a> <a data-scroll href="#contact"> Contact </a>  </div></div>';
-      smoothScroll.init({
-        speed: 1000, // Integer. How fast to complete the scroll in milliseconds
-        easing: 'easeOutCubic', // Easing pattern to use
-        offset: 0, // Integer. How far to offset the scrolling anchor location in pixels
-      });
-
-    }
-
-    init();
-    animate();
-
-
-    var visibleMenu = false;
-
-    function showMenuItems() {
-      if (!visibleMenu) {
-        document.getElementById("deskMenuItems").style.visibility = 'visible';
-        document.getElementById("deskMenuItems").style.opacity = 1.0;
-      } else {
-        document.getElementById("deskMenuItems").style.visibility = 'hidden';
-        document.getElementById("deskMenuItems").style.opacity = 0;
+        (N = 2 ** 4), (beta = 100), (alpha = 0.004), (myScale = 5);
       }
-      visibleMenu = !visibleMenu;
-    }
-    
 
-  </script>
-</body>
+      // Desktop
+      else {
+        document.getElementById("myMenuDiv").innerHTML =
+          ' <div id="deskMenu"><a onclick="showMenuItems()"> <img src="img/menu-32.png" height="32" width="auto"/> </a> <div id="deskMenuItems" > <a data-scroll href="#about">About </a>  <a data-scroll href="#services">Services </a> <a data-scroll href="#work">Work </a> <a data-scroll href="#contact"> Contact </a>  </div></div>';
+        smoothScroll.init({
+          speed: 1000, // Integer. How fast to complete the scroll in milliseconds
+          easing: "easeOutCubic", // Easing pattern to use
+          offset: 0, // Integer. How far to offset the scrolling anchor location in pixels
+        });
+      }
 
+      init();
+      animate();
+
+      var visibleMenu = false;
+
+      function showMenuItems() {
+        if (!visibleMenu) {
+          document.getElementById("deskMenuItems").style.visibility = "visible";
+          document.getElementById("deskMenuItems").style.opacity = 1.0;
+        } else {
+          document.getElementById("deskMenuItems").style.visibility = "hidden";
+          document.getElementById("deskMenuItems").style.opacity = 0;
+        }
+        visibleMenu = !visibleMenu;
+      }
+    </script>
+  </body>
 </html>
